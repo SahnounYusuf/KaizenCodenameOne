@@ -18,6 +18,8 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
+import services.SmsService;
+import services.UserService;
 
 /**
  *
@@ -45,12 +47,9 @@ public class ForgetForm extends Form {
         registerButton.setUIID("LoginButton");
         registerButton.addActionListener(e -> {
             Toolbar.setGlobalToolbar(false);
-
-            Dialog.show("SUCCESS", "Welcome to the family", "OK", null);
-
-            Dialog.show("ERROR", "Oops! something went wrong.", "OK", null);
-
-//            new WalkthruForm(theme).show();
+            SmsService ss = new SmsService();
+            ss.SendPassword(tfCin.getText());
+            Dialog.show("SUCCESS", "Your password has been sent to your phone number.", "OK", null);
             Toolbar.setGlobalToolbar(true);
         });
 
