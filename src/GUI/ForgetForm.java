@@ -31,16 +31,13 @@ public class ForgetForm extends Form {
         super(new BorderLayout(BorderLayout.CENTER_BEHAVIOR_CENTER_ABSOLUTE));
         setUIID("LoginForm");
         Container welcome = FlowLayout.encloseCenter(
-                new Label("Enter your Email or phone number ", "WelcomeWhite"),
+                new Label("Enter your phone number ", "WelcomeWhite"),
                 new Label("", "WelcomeBlue")
         );
 
         getTitleArea().setUIID("Container");
-
-        TextField tfCin = new TextField("", "Cin number");
-
+        TextField tfCin = new TextField("", "Phone number");
         tfCin.setUIID("RegisterTextField");
-
         tfCin.getAllStyles().setMargin(LEFT, 0);
 
         Button registerButton = new Button("Send password");
@@ -50,7 +47,6 @@ public class ForgetForm extends Form {
             SmsService ss = new SmsService();
             ss.SendPassword(tfCin.getText());
             Dialog.show("SUCCESS", "Your password has been sent to your phone number.", "OK", null);
-            Toolbar.setGlobalToolbar(true);
         });
 
         Button btnAlreadyHava = new Button("Go to Login Page");

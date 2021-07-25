@@ -29,6 +29,10 @@ public class UserService {
     ArrayList<User> loggedUser;
     ArrayList<String> userPassword;
     ArrayList<String> passwords;
+    ArrayList<String> userLastLogin;
+    ArrayList<String> lastLogin;
+    ArrayList<String> userCountLogin;
+    ArrayList<String> countLogin;
     boolean flag = false;
 
     public int addUser(User p) {
@@ -227,13 +231,12 @@ public class UserService {
     }
 
     // ==================== Retrieve password by email or phone ==================
-    
     public ArrayList<String> retriveUserPasswordByEmail(String email) {
         String url = StaticVars.baseURL + "/getUserPasswordByEmail";
         ConnectionRequest req = new ConnectionRequest();
         req.setUrl(url);
         req.setPost(false);
-        
+
         req.addArgument("email", email);
 
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -247,8 +250,8 @@ public class UserService {
         System.out.println(personnes);
         return userPassword;
     }
-    
-        public ArrayList<String> parsePassword(String jsonText) {
+
+    public ArrayList<String> parsePassword(String jsonText) {
         try {
             passwords = new ArrayList<>();
             JSONParser j = new JSONParser();
@@ -267,13 +270,13 @@ public class UserService {
         }
         return (passwords);
     }
-    
+
     public ArrayList<String> retriveUserPasswordBySms(String phone) {
         String url = StaticVars.baseURL + "/getUserPasswordByPhone";
         ConnectionRequest req = new ConnectionRequest();
         req.setUrl(url);
         req.setPost(false);
-        
+
         req.addArgument("phone", phone);
 
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -287,8 +290,8 @@ public class UserService {
         System.out.println(personnes);
         return userPassword;
     }
-    
-        public ArrayList<String> parsePhone(String jsonText) {
+
+    public ArrayList<String> parsePhone(String jsonText) {
         try {
             passwords = new ArrayList<>();
             JSONParser j = new JSONParser();
@@ -303,8 +306,91 @@ public class UserService {
 
                 passwords.add(pass);
             }
-        } catch (IOException ex) {
+        } catch (IOException | NullPointerException ex) {
         }
         return (passwords);
+    }
+
+    // ====================== get last date logged and count login ==============================
+    // last login
+    public ArrayList<String> retriveUserLastLogin(String id) {
+        String url = StaticVars.baseURL + "/getUserLastLogin";
+        ConnectionRequest req = new ConnectionRequest();
+        req.setUrl(url);
+        req.setPost(false);
+
+        req.addArgument("idu", id);
+
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                userLastLogin = parseLastLogin(new String(req.getResponseData()));
+            }
+        });
+
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        System.out.println(userLastLogin);
+        return userLastLogin;
+    }
+
+    public ArrayList<String> parseLastLogin(String jsonText) {
+        try {
+            lastLogin = new ArrayList<>();
+            JSONParser j = new JSONParser();
+            Map<String, Object> personsListJson
+                    = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+
+            List<Map<String, Object>> list = (List<Map<String, Object>>) personsListJson.get("root");
+            for (Map<String, Object> objet : list) {
+                String pass = "";
+
+                pass = objet.get("login_date").toString();
+
+                lastLogin.add(pass);
+            }
+        } catch (IOException ex) {
+        }
+        return (lastLogin);
+    }
+
+    // count login 
+    public ArrayList<String> retriveUserCountLogin(String id) {
+        String url = StaticVars.baseURL + "/getUserLoginCount";
+        ConnectionRequest req = new ConnectionRequest();
+        req.setUrl(url);
+        req.setPost(false);
+
+        req.addArgument("idu", id);
+
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                userCountLogin = parseCountLogin(new String(req.getResponseData()));
+            }
+        });
+
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        System.out.println(userCountLogin);
+        return userCountLogin;
+    }
+
+    public ArrayList<String> parseCountLogin(String jsonText) {
+        try {
+            countLogin = new ArrayList<>();
+            JSONParser j = new JSONParser();
+            Map<String, Object> personsListJson
+                    = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+
+            List<Map<String, Object>> list = (List<Map<String, Object>>) personsListJson.get("root");
+            for (Map<String, Object> objet : list) {
+                String pass = "";
+
+                pass = objet.get("login_count").toString();
+
+                countLogin.add(pass);
+            }
+        } catch (IOException ex) {
+        }
+        return (countLogin);
     }
 }

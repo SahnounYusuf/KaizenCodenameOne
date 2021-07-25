@@ -20,9 +20,9 @@
         <val key="@sideMenuSizePortraitInt" value="10" />
         <val key="@sideMenuSizeTabLandscapeInt" value="80" />
         <val key="@sideMenuSizeTabPortraitInt" value="75" />
-        <val key="BlueSeparatorLine.bgColor" value="5ce2ff" />
-        <val key="BlueSeparatorLine.margin" value="0,0,0,0" />
-        <val key="BlueSeparatorLine.padding" value="2,1,1,1" />
+        <val key="BlueSeparatorLine.bgColor" value="cc0099" />
+        <val key="BlueSeparatorLine.margin" value="0.0,0.0,0.0,0.0" />
+        <val key="BlueSeparatorLine.padding" value="2.0,1.0,1.0,1.0" />
         <val key="BlueSeparatorLine.transparency" value="255" />
         <val key="BottomPaddingContainer.margin" value="0,0,0,0" />
         <val key="BottomPaddingContainer.padUnit" value="0,0,2,0" />
@@ -42,7 +42,7 @@
         <val key="CenterTitle.padUnit" value="2,2,2,2" />
         <val key="CenterTitle.padding" value="1,1,1,1" />
         <val key="CenterTitle.transparency" value="0" />
-        <val key="CompletedTasks.bgColor" value="3399ff" />
+        <val key="CompletedTasks.bgColor" value="9999ff" />
         <val key="CompletedTasks.margin" value="0.0,0.0,0.0,0.0" />
         <val key="CompletedTasks.padUnit" value="2,2,2,2" />
         <val key="CompletedTasks.padding" value="3.0,3.0,0.0,0.0" />
@@ -90,7 +90,7 @@
         <val key="DeleteButton.sel#padUnit" value="2,2,2,2" />
         <val key="DeleteButton.sel#padding" value="2.0,2.0,2.0,2.0" />
         <val key="DeleteProfil.align" value="4" />
-        <border key="DeleteProfil.border" type="round" roundBorderColor="16711680" opacity="150" strokeColor="16711680" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <border key="DeleteProfil.border" type="round" roundBorderColor="16711680" opacity="90" strokeColor="16711680" strokeOpacity="30" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="DeleteProfil.fgColor" value="ffffff" />
         <font key="DeleteProfil.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
         <val key="DeleteProfil.marUnit" value="2,2,2,2" />
@@ -163,7 +163,7 @@
         <val key="LoginButton.sel#padding" value="2,2,2,2" />
         <val key="LoginButton.sel#transparency" value="255" />
         <val key="LoginButton.transparency" value="255" />
-        <gradient key="LoginForm.bgGradient" color1="10092543" color2="3342489" posX="0.5" posY="0.5" radius="1.0" />
+        <gradient key="LoginForm.bgGradient" color1="6750207" color2="153" posX="0.5" posY="0.5" radius="1.0" />
         <val key="LoginForm.bgType" value="6" />
         <val key="LoginForm.margin" value="0.0,0.0,0.0,0.0" />
         <val key="LoginForm.padUnit" value="2,2,2,2" />
@@ -176,7 +176,9 @@
         <val key="MenuButton.transparency" value="0" />
         <val key="ProfilButton.align" value="4" />
         <val key="ProfilButton.bgColor" value="66ffff" />
-        <border key="ProfilButton.border" type="round" roundBorderColor="3342591" opacity="150" strokeColor="3355647" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <gradient key="ProfilButton.bgGradient" color1="16763904" color2="6087423" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="ProfilButton.bgType" value="7" />
+        <border key="ProfilButton.border" type="round" roundBorderColor="10066431" opacity="255" strokeColor="10066431" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="ProfilButton.fgColor" value="ffffff" />
         <font key="ProfilButton.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
         <val key="ProfilButton.marUnit" value="2,2,2,2" />
@@ -203,7 +205,7 @@
         <val key="ProfilButton.sel#padUnit" value="2,2,2,2" />
         <val key="ProfilButton.sel#padding" value="2.0,2.0,2.0,2.0" />
         <val key="ProfilButton.sel#transparency" value="100" />
-        <val key="ProfilButton.transparency" value="100" />
+        <val key="ProfilButton.transparency" value="20" />
         <val key="ProfilePic.align" value="4" />
         <val key="ProfilePic.padUnit" value="2,2,2,2" />
         <val key="ProfilePic.padding" value="3,3,3,3" />
@@ -212,7 +214,7 @@
         <val key="ProfilePicTitle.padUnit" value="2,2,2,2" />
         <val key="ProfilePicTitle.padding" value="1,3,2,2" />
         <val key="ProfilePicTitle.transparency" value="0" />
-        <border key="RegisterTextField.border" type="round" roundBorderColor="13840175" opacity="0" strokeColor="16777215" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <border key="RegisterTextField.border" type="round" roundBorderColor="13840175" opacity="0" strokeColor="16777215" strokeOpacity="100" strokeThickness="2.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="RegisterTextField.fgColor" value="ffffff" />
         <font key="RegisterTextField.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
         <val key="RegisterTextField.marUnit" value="2,2,2,2" />
@@ -233,10 +235,10 @@
         <val key="RegisterTextField.sel#margin" value="3.0,3.0,1.0,1.0" />
         <val key="RegisterTextField.sel#padUnit" value="2,2,2,2" />
         <val key="RegisterTextField.sel#padding" value="2.0,2.0,2.0,2.0" />
-        <val key="RemainingTasks.bgColor" value="4dc2ff" />
-        <val key="RemainingTasks.margin" value="0,0,0,0" />
+        <val key="RemainingTasks.bgColor" value="ffcc33" />
+        <val key="RemainingTasks.margin" value="0.0,0.0,0.0,0.0" />
         <val key="RemainingTasks.padUnit" value="2,0,2,0" />
-        <val key="RemainingTasks.padding" value="3,3,0,0" />
+        <val key="RemainingTasks.padding" value="3.0,3.0,0.0,0.0" />
         <val key="RemainingTasks.transparency" value="255" />
         <val key="SettingsButton.align" value="4" />
         <val key="SettingsButton.bgColor" value="66ffff" />
@@ -305,9 +307,8 @@
         <val key="SettingsForm.padding" value="0.0,0.0,0.0,0.0" />
         <val key="SettingsForm.transparency" value="255" />
         <val key="SettingsSearch.align" value="4" />
-        <val key="SettingsSearch.bgColor" value="66ffff" />
-        <border key="SettingsSearch.border" type="round" roundBorderColor="26367" opacity="0" strokeColor="26367" strokeOpacity="80" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
-        <val key="SettingsSearch.fgColor" value="ffffff" />
+        <border key="SettingsSearch.border" type="underline"  millimeters="false" thickness="3.0" color="6710886" />
+        <val key="SettingsSearch.fgColor" value="666666" />
         <font key="SettingsSearch.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
         <val key="SettingsSearch.marUnit" value="2,2,2,2" />
         <val key="SettingsSearch.margin" value="3.0,3.0,5.0,5.0" />

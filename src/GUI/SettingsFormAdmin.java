@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
 import com.codename1.ui.Button;
@@ -34,7 +29,7 @@ public class SettingsFormAdmin extends SideMenuBaseForm {
     public SettingsFormAdmin(Resources res) {
 
         super(new BorderLayout());
-        setUIID("SettingsForm");
+//        setUIID("SettingsForm");
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
         User u = StaticVars.getCurrentUser();
