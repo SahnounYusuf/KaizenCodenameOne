@@ -97,7 +97,7 @@ public class TutoForm extends Form {
         
         Button skip = new Button("SKIP TUTORIAL");
         skip.setUIID("SkipButton");
-        skip.addActionListener(e -> new SettingsForm(res).show());
+        skip.addActionListener(e -> new BlankForm(res).show());
         
         Container southLayout = BoxLayout.encloseY(
                         radioContainer,

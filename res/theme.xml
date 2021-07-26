@@ -508,6 +508,8 @@
         <val key="UserTextField.press#margin" value="1.5,1.5,1.0,1.0" />
         <val key="UserTextField.press#padUnit" value="2,2,2,2" />
         <val key="UserTextField.press#padding" value="2.0,2.0,2.0,2.0" />
+        <val key="VeloTextField.fgColor" value="000000" />
+        <font key="VeloTextField.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
         <val key="WalkthruBody.align" value="4" />
         <val key="WalkthruBody.fgColor" value="ffffff" />
         <font key="WalkthruBody.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.0" />
