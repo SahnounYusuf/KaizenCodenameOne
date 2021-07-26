@@ -48,17 +48,21 @@ public abstract class SideMenuBaseForm extends Form {
 
         getToolbar().addComponentToSideMenu(sidemenuTop);
         getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD, e -> {
-            System.out.println("this is for Dashboard");
+            new BlankForm(res).show();
+        });
+        getToolbar().addMaterialCommandToSideMenu("  Rent", FontImage.MATERIAL_MONEY, e -> {
+            new BlankForm(res).show();
+        });
+        getToolbar().addMaterialCommandToSideMenu("  Bicycle", FontImage.MATERIAL_BIKE_SCOOTER, e -> {
+            new veloAddForm(res).show();
+        });
+        getToolbar().addMaterialCommandToSideMenu("  Piece", FontImage.MATERIAL_CHECKLIST, e -> {
+            new BlankForm(res).show();
         });
         getToolbar().addMaterialCommandToSideMenu("  Event", FontImage.MATERIAL_EVENT, e -> {
-            System.out.println("this is for Event");
+            new ListEvent().show();
         });
-        getToolbar().addMaterialCommandToSideMenu("  Activity", FontImage.MATERIAL_TRENDING_UP, e -> {
-            System.out.println("this is for Activity");
-        });
-        getToolbar().addMaterialCommandToSideMenu("  Tasks", FontImage.MATERIAL_ACCESS_TIME, e -> {
-            System.out.println("this is for tasks");
-        });
+        
         getToolbar().addMaterialCommandToSideMenu("  Account Settings", FontImage.MATERIAL_SETTINGS, e -> {
             if (u.getRole().equals("Admin")) {
                 new SettingsFormAdmin(res).show();

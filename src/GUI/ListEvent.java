@@ -1,0 +1,177 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GUI;
+
+import com.codename1.ui.Button;
+import com.codename1.ui.Container;
+import com.codename1.ui.FontImage;
+import com.codename1.ui.Graphics;
+import com.codename1.ui.Image;
+import com.codename1.ui.Label;
+import com.codename1.ui.Toolbar;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BorderLayout;
+import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.util.Resources;
+import entities.Event;
+import entities.User;
+import services.ServiceEvent;
+import services.UserService;
+import utils.StaticVars;
+
+/**
+ * GUI builder created Form
+ *
+ * @author Yassine
+ */
+public class ListEvent extends SideMenuBaseForm  {
+
+    public ListEvent() {
+        this(com.codename1.ui.util.Resources.getGlobalResources());
+    }
+
+    public ListEvent(com.codename1.ui.util.Resources resourceObjectInstance) {
+        
+        super(new BorderLayout());
+        
+        initGuiBuilderComponents(resourceObjectInstance);
+
+        UserService us = new UserService();
+//        setUIID("SettingsForm");
+        Toolbar tb = this.getToolbar();
+        tb.setTitleCentered(false);
+        User u = StaticVars.getCurrentUser();
+        Image profilePic = resourceObjectInstance.getImage("user-picture.jpg");
+        Image tintedImage = Image.createImage(profilePic.getWidth(), profilePic.getHeight());
+        Graphics g = tintedImage.getGraphics();
+        g.drawImage(profilePic, 0, 0);
+        g.drawImage(resourceObjectInstance.getImage("gradient-overlay.png"), 0, 0, profilePic.getWidth(), profilePic.getHeight());
+
+        tb.getUnselectedStyle().setBgImage(tintedImage);
+
+        Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+
+        Button settingsButton = new Button("");
+        settingsButton.setUIID("Title");
+        FontImage.setMaterialIcon(settingsButton, FontImage.MATERIAL_SETTINGS);
+
+        Label space = new Label("", "TitlePictureSpace");
+        space.setShowEvenIfBlank(true);
+        Container titleComponent
+                = BorderLayout.north(
+                        BorderLayout.west(menuButton).
+                                add(BorderLayout.CENTER, space).
+                                add(BorderLayout.SOUTH,
+                                        FlowLayout.encloseIn(
+                                                new Label(" Events", "WelcomeWhite"),
+                                                new Label("", "WelcomeWhite")
+                                        )));
+        titleComponent.setUIID("BottomPaddingContainer");
+        tb.setTitleComponent(titleComponent);
+        
+        setupSideMenu(resourceObjectInstance);
+
+        gui_Container.setScrollableY(true);
+
+        for (Event e : new ServiceEvent().getEvent()) {
+            //this.add(getEvent(p));
+            Button mb = new Button(e.getEvent_name());
+            mb.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    //Dialog.show("test", "personne avec l'id "+p.getId(), "OK", null);
+                    DetailsEvent detevt = new DetailsEvent();
+//                       detevt.gui_id.setText(String.valueOf(e.getId()));
+                    detevt.gui_event_name.setText(e.getEvent_name());
+                    detevt.gui_date.setText(e.getDate());
+                    detevt.gui_heure.setText(e.getHeure());
+                    detevt.gui_place.setText(e.getPlace());
+                    detevt.evt = e;
+                    detevt.show();
+                }
+            });
+            gui_Container.add(mb);
+        }
+//        for(int i=0;i<100;i++)
+//        {
+//            MultiButton mb=new MultiButton("list "+i);
+//            mb.setTextLine2("det");
+//            gui_Container.add(mb);
+//        }
+    }
+
+//////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+    protected com.codename1.ui.Container gui_Container = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
+    protected com.codename1.ui.Button gui_BtnAddEvent = new com.codename1.ui.Button();
+
+// <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void guiBuilderBindComponentListeners() {
+        EventCallbackClass callback = new EventCallbackClass();
+        gui_BtnAddEvent.addActionListener(callback);
+    }
+
+    class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {
+
+        private com.codename1.ui.Component cmp;
+
+        public EventCallbackClass(com.codename1.ui.Component cmp) {
+            this.cmp = cmp;
+        }
+
+        public EventCallbackClass() {
+        }
+
+        public void actionPerformed(com.codename1.ui.events.ActionEvent ev) {
+            com.codename1.ui.Component sourceComponent = ev.getComponent();
+
+            if (sourceComponent.getParent().getLeadParent() != null && (sourceComponent.getParent().getLeadParent() instanceof com.codename1.components.MultiButton || sourceComponent.getParent().getLeadParent() instanceof com.codename1.components.SpanButton)) {
+                sourceComponent = sourceComponent.getParent().getLeadParent();
+            }
+
+            if (sourceComponent == gui_BtnAddEvent) {
+                onBtnAddEventActionEvent(ev);
+            }
+        }
+
+        public void dataChanged(int type, int index) {
+        }
+    }
+
+    private void initGuiBuilderComponents(com.codename1.ui.util.Resources resourceObjectInstance) {
+        guiBuilderBindComponentListeners();
+        setLayout(new com.codename1.ui.layouts.LayeredLayout());
+        setInlineStylesTheme(resourceObjectInstance);
+        setScrollableY(true);
+        setInlineStylesTheme(resourceObjectInstance);
+        setTitle("ListEvent");
+        setName("ListEvent");
+        gui_Container.setPreferredSizeStr("85.520744mm 109.864525mm");
+        gui_Container.setScrollableY(true);
+        gui_Container.setInlineStylesTheme(resourceObjectInstance);
+        gui_Container.setName("Container");
+        gui_BtnAddEvent.setText("Add Event");
+        gui_BtnAddEvent.setInlineStylesTheme(resourceObjectInstance);
+        gui_BtnAddEvent.setName("BtnAddEvent");
+        addComponent(gui_Container);
+        addComponent(gui_BtnAddEvent);
+        ((com.codename1.ui.layouts.LayeredLayout) gui_Container.getParent().getLayout()).setInsets(gui_Container, "4.657071mm 9.593952% 9.983364% 5.927185mm").setReferenceComponents(gui_Container, "-1 -1 -1 -1").setReferencePositions(gui_Container, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout) gui_BtnAddEvent.getParent().getLayout()).setInsets(gui_BtnAddEvent, "auto 15.72327% 4.0220156mm auto").setReferenceComponents(gui_BtnAddEvent, "-1 -1 -1 -1").setReferencePositions(gui_BtnAddEvent, "0.0 0.0 0.0 0.0");
+    }// </editor-fold>
+
+//-- DON'T EDIT ABOVE THIS LINE!!!
+    public void onBtnAddEventActionEvent(com.codename1.ui.events.ActionEvent ev) {
+        new AddEvent().show();
+    }
+    
+    @Override
+    protected void showOtherForm(Resources res) {
+    }
+
+}
