@@ -68,7 +68,7 @@ public class LoginF extends Form {
             ArrayList<User> u = us.verifyUser(login.getText(), password.getText());
             if (!u.isEmpty()) {
                 StaticVars.setCurrentUser(u.get(0));
-                new TutoForm(theme).show();
+                new BlankForm(theme).show();
             } else {
                 Dialog.show("ERROR", "Wrong Cin/Password", "OK", null);
             }
