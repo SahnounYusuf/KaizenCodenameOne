@@ -2,7 +2,6 @@ package GUI;
 
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
-import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
@@ -29,7 +28,7 @@ public class SettingsFormAdmin extends SideMenuBaseForm {
     public SettingsFormAdmin(Resources res) {
 
         super(new BorderLayout());
-//        setUIID("SettingsForm");
+        setUIID("SettingsForm");
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
         User u = StaticVars.getCurrentUser();
@@ -59,7 +58,7 @@ public class SettingsFormAdmin extends SideMenuBaseForm {
                                 add(BorderLayout.SOUTH,
                                         FlowLayout.encloseIn(
                                                 new Label("  " + u.getPrenom() + " ", "WelcomeWhite"),
-//                                                new Label("  " + u.getPrenom() + " ", "WelcomeBlue"),
+                                                //                                                new Label("  " + u.getPrenom() + " ", "WelcomeBlue"),
                                                 new Label(u.getNom(), "WelcomeWhite")
                                         )));
         titleComponent.setUIID("BottomPaddingContainer");
@@ -68,9 +67,10 @@ public class SettingsFormAdmin extends SideMenuBaseForm {
         Label separator = new Label("", "BlueSeparatorLine");
         separator.setShowEvenIfBlank(true);
         add(BorderLayout.NORTH, separator);
-        
+
         TextField tfSearch = new TextField("", "Search");
         tfSearch.setUIID("SettingsSearch");
+        tfSearch.getStyle().setBgTransparency(0);
 //        tfSearch.addDataChangedListener(d);
 
         Label spaceLabel1 = new Label(" ");
@@ -79,7 +79,6 @@ public class SettingsFormAdmin extends SideMenuBaseForm {
 
 //        infoUser.getStyle().setBgColor(0x66ff);
 //        infoUser.getStyle().setBgTransparency(30);
-
         for (User p : new UserService().getUsers()) {
 //            BorderLayout.center(tfFirst);
             infoUser.add(getPersonViewer(res, p));
@@ -94,15 +93,15 @@ public class SettingsFormAdmin extends SideMenuBaseForm {
 
     @Override
     protected void showOtherForm(Resources res) {
-        
+
     }
 
     public Container getPersonViewer(Resources res, User p) {
 
-        Label emailIcon = new Label("", "TextField");
-        Label phoneIcon = new Label("", "TextField");
-        Label userIcon = new Label("", "TextField");
-        Label roleIcon = new Label("", "TextField");
+        Label emailIcon = new Label("", "UserTextField");
+        Label phoneIcon = new Label("", "UserTextField");
+        Label userIcon = new Label("", "UserTextField");
+        Label roleIcon = new Label("", "UserTextField");
 
         emailIcon.getAllStyles().setMargin(RIGHT, 0);
         phoneIcon.getAllStyles().setMargin(RIGHT, 0);
@@ -119,15 +118,13 @@ public class SettingsFormAdmin extends SideMenuBaseForm {
         Label lbEmail = new Label(p.getEmail());
         Label lbPhone = new Label(String.valueOf(p.getPhone()));
         Label lbRole = new Label(p.getRole());
-        
+
         lbNom.setUIID("UserTextField");
         lbPrenom.setUIID("UserTextField");
         lbEmail.setUIID("UserTextField");
         lbPhone.setUIID("UserTextField");
         lbRole.setUIID("UserTextField");
-        
-        
-        
+
         Container cnt = BoxLayout.encloseY(
                 BorderLayout.center(cntName).
                         add(BorderLayout.WEST, userIcon),
@@ -151,8 +148,8 @@ public class SettingsFormAdmin extends SideMenuBaseForm {
         cnt.setLeadComponent(btn);
         cnt.getAllStyles().setBorder(Border.createInsetBorder(2));
         cnt.setUIID("SettingsContainer");
-        cnt.getStyle().setBgColor(0x66ff);
-        cnt.getStyle().setBgTransparency(90);
+        cnt.getStyle().setBgColor(0xffffff);
+        cnt.getStyle().setBgTransparency(0);
         cnt.setScrollableY(true);
         cnt.setScrollVisible(false);
         return cnt;

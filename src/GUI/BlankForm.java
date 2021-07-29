@@ -59,7 +59,7 @@ public class BlankForm extends SideMenuBaseForm {
                                 add(BorderLayout.CENTER, space).
                                 add(BorderLayout.SOUTH,
                                         FlowLayout.encloseIn(
-                                                new Label("Blank Form", "WelcomeWhite"),
+                                                new Label("  Blank Form", "WelcomeWhite"),
                                                 new Label("", "WelcomeWhite")
                                         )));
         titleComponent.setUIID("BottomPaddingContainer");
