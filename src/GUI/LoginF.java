@@ -57,7 +57,8 @@ public class LoginF extends Form {
         FontImage.setMaterialIcon(passwordIcon, FontImage.MATERIAL_LOCK_OUTLINE, 3);
 
         Button fbButton = new Button("Continue with Facebook");
-//        fbButton.setMaterialIcon(FontImage.MATERIAL_FACEBOOK, 3);
+        fbButton.setMaterialIcon(FontImage.MATERIAL_FACEBOOK, 5);
+        fbButton.setIconUIID("FacebookIcon");
         fbButton.setUIID("FacebookButton");
 
         Button loginButton = new Button("Login");
@@ -66,9 +67,14 @@ public class LoginF extends Form {
 //            Toolbar.setGlobalToolbar(false);
             UserService us = new UserService();
             ArrayList<User> u = us.verifyUser(login.getText(), password.getText());
+
             if (!u.isEmpty()) {
-                StaticVars.setCurrentUser(u.get(0));
-                new BlankForm(theme).show();
+                if (us.retriveUserState(String.valueOf(u.get(0).getId())).get(0).getBlock().equals("Yes")) {
+                    Dialog.show("ERROR", "Your account is banned, Contact admin for more info.", "OK", null);
+                } else {
+                    StaticVars.setCurrentUser(u.get(0));
+                    new BlankForm(theme).show();
+                }
             } else {
                 Dialog.show("ERROR", "Wrong Cin/Password", "OK", null);
             }

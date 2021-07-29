@@ -42,7 +42,7 @@
         <val key="CenterTitle.padUnit" value="2,2,2,2" />
         <val key="CenterTitle.padding" value="1,1,1,1" />
         <val key="CenterTitle.transparency" value="0" />
-        <val key="CompletedTasks.bgColor" value="9999ff" />
+        <val key="CompletedTasks.bgColor" value="6633ff" />
         <val key="CompletedTasks.margin" value="0.0,0.0,0.0,0.0" />
         <val key="CompletedTasks.padUnit" value="2,2,2,2" />
         <val key="CompletedTasks.padding" value="3.0,3.0,0.0,0.0" />
@@ -114,14 +114,59 @@
         <val key="DeleteProfil.sel#padUnit" value="2,2,2,2" />
         <val key="DeleteProfil.sel#padding" value="2.0,2.0,2.0,2.0" />
         <val key="FacebookButton.align" value="4" />
-        <border key="FacebookButton.border" type="round" roundBorderColor="1603570" opacity="150" strokeColor="1603570" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <border key="FacebookButton.border" type="round" roundBorderColor="1603570" opacity="200" strokeColor="1603570" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="FacebookButton.fgColor" value="ffffff" />
         <font key="FacebookButton.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
         <val key="FacebookButton.marUnit" value="2,2,2,2" />
         <val key="FacebookButton.margin" value="3.0,3.0,1.0,1.0" />
         <val key="FacebookButton.padUnit" value="2,2,2,2" />
         <val key="FacebookButton.padding" value="2.0,2.0,2.0,2.0" />
+        <val key="FacebookButton.press#align" value="4" />
+        <border key="FacebookButton.press#border" type="round" roundBorderColor="1603570" opacity="150" strokeColor="1603570" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="FacebookButton.press#fgColor" value="ffffff" />
+        <font key="FacebookButton.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
+        <val key="FacebookButton.press#marUnit" value="2,2,2,2" />
+        <val key="FacebookButton.press#margin" value="3.0,3.0,1.0,1.0" />
+        <val key="FacebookButton.press#padUnit" value="2,2,2,2" />
+        <val key="FacebookButton.press#padding" value="2.0,2.0,2.0,2.0" />
+        <val key="FacebookButton.press#transparency" value="255" />
+        <val key="FacebookButton.sel#align" value="4" />
+        <border key="FacebookButton.sel#border" type="round" roundBorderColor="1603570" opacity="150" strokeColor="1603570" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="FacebookButton.sel#fgColor" value="ffffff" />
+        <font key="FacebookButton.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
+        <val key="FacebookButton.sel#marUnit" value="2,2,2,2" />
+        <val key="FacebookButton.sel#margin" value="3.0,3.0,1.0,1.0" />
+        <val key="FacebookButton.sel#padUnit" value="2,2,2,2" />
+        <val key="FacebookButton.sel#padding" value="2.0,2.0,2.0,2.0" />
+        <val key="FacebookButton.sel#transparency" value="255" />
         <val key="FacebookButton.transparency" value="255" />
+        <val key="FacebookIcon.align" value="4" />
+        <val key="FacebookIcon.bgColor" value="000000" />
+        <val key="FacebookIcon.fgColor" value="ffffff" />
+        <font key="FacebookIcon.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="70.0" />
+        <val key="FacebookIcon.marUnit" value="2,2,2,2" />
+        <val key="FacebookIcon.margin" value="3.0,3.0,1.0,3.0" />
+        <val key="FacebookIcon.padUnit" value="2,2,2,2" />
+        <val key="FacebookIcon.padding" value="2.0,2.0,2.0,2.0" />
+        <val key="FacebookIcon.press#align" value="4" />
+        <val key="FacebookIcon.press#bgColor" value="000000" />
+        <val key="FacebookIcon.press#fgColor" value="ffffff" />
+        <font key="FacebookIcon.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="70.0" />
+        <val key="FacebookIcon.press#marUnit" value="2,2,2,2" />
+        <val key="FacebookIcon.press#margin" value="3.0,3.0,1.0,3.0" />
+        <val key="FacebookIcon.press#padUnit" value="2,2,2,2" />
+        <val key="FacebookIcon.press#padding" value="2.0,2.0,2.0,2.0" />
+        <val key="FacebookIcon.press#transparency" value="0" />
+        <val key="FacebookIcon.sel#align" value="4" />
+        <val key="FacebookIcon.sel#bgColor" value="000000" />
+        <val key="FacebookIcon.sel#fgColor" value="ffffff" />
+        <font key="FacebookIcon.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="70.0" />
+        <val key="FacebookIcon.sel#marUnit" value="2,2,2,2" />
+        <val key="FacebookIcon.sel#margin" value="3.0,3.0,1.0,3.0" />
+        <val key="FacebookIcon.sel#padUnit" value="2,2,2,2" />
+        <val key="FacebookIcon.sel#padding" value="2.0,2.0,2.0,2.0" />
+        <val key="FacebookIcon.sel#transparency" value="0" />
+        <val key="FacebookIcon.transparency" value="0" />
         <val key="FloatingActionButton.bgColor" value="ffffff" />
         <val key="FloatingActionButton.fgColor" value="0" />
         <val key="FloatingActionButton.press#bgColor" value="6aaff" />
@@ -136,7 +181,7 @@
         <val key="Label.transparency" value="0" />
         <val key="LoginButton.align" value="4" />
         <val key="LoginButton.bgColor" value="f0f0f0" />
-        <border key="LoginButton.border" type="round" roundBorderColor="6087423" opacity="50" strokeColor="6087423" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <border key="LoginButton.border" type="round" roundBorderColor="6087423" opacity="50" strokeColor="6087423" strokeOpacity="255" strokeThickness="3.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="LoginButton.fgColor" value="ffffff" />
         <font key="LoginButton.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="40.0" />
         <val key="LoginButton.marUnit" value="2,2,2,2" />
@@ -145,7 +190,7 @@
         <val key="LoginButton.padding" value="2.0,2.0,2.0,2.0" />
         <val key="LoginButton.press#align" value="4" />
         <val key="LoginButton.press#bgColor" value="f0f0f0" />
-        <border key="LoginButton.press#border" type="round" roundBorderColor="6087423" opacity="90" strokeColor="6087423" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <border key="LoginButton.press#border" type="round" roundBorderColor="6087423" opacity="50" strokeColor="6087423" strokeOpacity="255" strokeThickness="3.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="LoginButton.press#fgColor" value="ffffff" />
         <font key="LoginButton.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="40.0" />
         <val key="LoginButton.press#marUnit" value="2,2,2,2" />
@@ -235,7 +280,7 @@
         <val key="RegisterTextField.sel#margin" value="3.0,3.0,1.0,1.0" />
         <val key="RegisterTextField.sel#padUnit" value="2,2,2,2" />
         <val key="RegisterTextField.sel#padding" value="2.0,2.0,2.0,2.0" />
-        <val key="RemainingTasks.bgColor" value="ffcc33" />
+        <val key="RemainingTasks.bgColor" value="99ff" />
         <val key="RemainingTasks.margin" value="0.0,0.0,0.0,0.0" />
         <val key="RemainingTasks.padUnit" value="2,0,2,0" />
         <val key="RemainingTasks.padding" value="3.0,3.0,0.0,0.0" />
@@ -275,8 +320,8 @@
         <border key="SettingsContainer.border" type="underline"  millimeters="false" thickness="3.0" color="6710886" />
         <val key="SettingsContainer.fgColor" value="666666" />
         <font key="SettingsContainer.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
-        <val key="SettingsContainer.marUnit" value="2,2,2,2" />
-        <val key="SettingsContainer.margin" value="0.0,1.0,3.0,3.0" />
+        <val key="SettingsContainer.marUnit" value="2,2,0,2" />
+        <val key="SettingsContainer.margin" value="0.0,3.0,1.0,1.0" />
         <val key="SettingsContainer.padUnit" value="2,2,2,2" />
         <val key="SettingsContainer.padding" value="0.0,0.5,3.0,3.0" />
         <val key="SettingsContainer.press#align" value="4" />
@@ -284,8 +329,8 @@
         <border key="SettingsContainer.press#border" type="underline"  millimeters="false" thickness="3.0" color="6710886" />
         <val key="SettingsContainer.press#fgColor" value="666666" />
         <font key="SettingsContainer.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
-        <val key="SettingsContainer.press#marUnit" value="2,2,2,2" />
-        <val key="SettingsContainer.press#margin" value="0.0,1.0,3.0,3.0" />
+        <val key="SettingsContainer.press#marUnit" value="2,2,0,2" />
+        <val key="SettingsContainer.press#margin" value="0.0,3.0,1.0,1.0" />
         <val key="SettingsContainer.press#padUnit" value="2,2,2,2" />
         <val key="SettingsContainer.press#padding" value="0.0,0.5,3.0,3.0" />
         <val key="SettingsContainer.press#transparency" value="50" />
@@ -294,13 +339,13 @@
         <border key="SettingsContainer.sel#border" type="underline"  millimeters="false" thickness="3.0" color="6710886" />
         <val key="SettingsContainer.sel#fgColor" value="666666" />
         <font key="SettingsContainer.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
-        <val key="SettingsContainer.sel#marUnit" value="2,2,2,2" />
-        <val key="SettingsContainer.sel#margin" value="0.0,1.0,3.0,3.0" />
+        <val key="SettingsContainer.sel#marUnit" value="2,2,0,2" />
+        <val key="SettingsContainer.sel#margin" value="0.0,3.0,1.0,1.0" />
         <val key="SettingsContainer.sel#padUnit" value="2,2,2,2" />
         <val key="SettingsContainer.sel#padding" value="0.0,0.5,3.0,3.0" />
         <val key="SettingsContainer.sel#transparency" value="50" />
         <val key="SettingsContainer.transparency" value="50" />
-        <gradient key="SettingsForm.bgGradient" color1="16777215" color2="6737151" posX="0.5" posY="0.5" radius="1.0" />
+        <gradient key="SettingsForm.bgGradient" color1="16777215" color2="10079487" posX="0.5" posY="0.5" radius="1.0" />
         <val key="SettingsForm.bgType" value="6" />
         <val key="SettingsForm.margin" value="0.0,0.0,0.0,0.0" />
         <val key="SettingsForm.padUnit" value="2,2,2,2" />
@@ -315,22 +360,20 @@
         <val key="SettingsSearch.padUnit" value="2,2,2,2" />
         <val key="SettingsSearch.padding" value="2.0,2.0,2.0,2.0" />
         <val key="SettingsSearch.press#align" value="4" />
-        <val key="SettingsSearch.press#bgColor" value="66ffff" />
-        <border key="SettingsSearch.press#border" type="round" roundBorderColor="26367" opacity="60" strokeColor="6750207" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
-        <val key="SettingsSearch.press#fgColor" value="ffffff" />
+        <border key="SettingsSearch.press#border" type="underline"  millimeters="false" thickness="3.0" color="6710886" />
+        <val key="SettingsSearch.press#fgColor" value="666666" />
         <font key="SettingsSearch.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
         <val key="SettingsSearch.press#marUnit" value="2,2,2,2" />
-        <val key="SettingsSearch.press#margin" value="3.0,3.0,1.0,1.0" />
+        <val key="SettingsSearch.press#margin" value="3.0,3.0,5.0,5.0" />
         <val key="SettingsSearch.press#padUnit" value="2,2,2,2" />
         <val key="SettingsSearch.press#padding" value="2.0,2.0,2.0,2.0" />
         <val key="SettingsSearch.press#transparency" value="100" />
         <val key="SettingsSearch.sel#align" value="4" />
-        <val key="SettingsSearch.sel#bgColor" value="66ffff" />
-        <border key="SettingsSearch.sel#border" type="round" roundBorderColor="26367" opacity="60" strokeColor="6750207" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
-        <val key="SettingsSearch.sel#fgColor" value="ffffff" />
+        <border key="SettingsSearch.sel#border" type="underline"  millimeters="false" thickness="3.0" color="6710886" />
+        <val key="SettingsSearch.sel#fgColor" value="666666" />
         <font key="SettingsSearch.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
         <val key="SettingsSearch.sel#marUnit" value="2,2,2,2" />
-        <val key="SettingsSearch.sel#margin" value="3.0,3.0,1.0,1.0" />
+        <val key="SettingsSearch.sel#margin" value="3.0,3.0,5.0,5.0" />
         <val key="SettingsSearch.sel#padUnit" value="2,2,2,2" />
         <val key="SettingsSearch.sel#padding" value="2.0,2.0,2.0,2.0" />
         <val key="SettingsSearch.sel#transparency" value="100" />
@@ -419,6 +462,13 @@
         <val key="SkipButton.sel#padding" value="2,2,2,2" />
         <val key="SkipButton.sel#transparency" value="255" />
         <val key="SkipButton.transparency" value="255" />
+        <val key="StatTextField.align" value="1" />
+        <val key="StatTextField.fgColor" value="666666" />
+        <font key="StatTextField.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="30.0" />
+        <val key="StatTextField.marUnit" value="2,2,2,2" />
+        <val key="StatTextField.margin" value="0.5,0.5,0.5,0.5" />
+        <val key="StatTextField.padUnit" value="2,2,2,2" />
+        <val key="StatTextField.padding" value="0.0,0.5,0.5,0.5" />
         <val key="StatusBarSideMenu.margin" value="0,0,0,0" />
         <val key="StatusBarSideMenu.padding" value="0,0,0,0" />
         <val key="StatusBarSideMenu.transparency" value="0" />
@@ -495,10 +545,10 @@
         <val key="Toolbar.margin" value="0,0,0,0" />
         <val key="Toolbar.padding" value="0,0,0,0" />
         <val key="UserTextField.align" value="1" />
-        <val key="UserTextField.fgColor" value="ffffff" />
+        <val key="UserTextField.fgColor" value="666666" />
         <font key="UserTextField.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="4" actualSize="50.0" />
         <val key="UserTextField.marUnit" value="2,2,2,2" />
-        <val key="UserTextField.margin" value="1.5,1.5,1.5,1.5" />
+        <val key="UserTextField.margin" value="1.0,1.0,1.5,0.0" />
         <val key="UserTextField.padUnit" value="2,2,2,2" />
         <val key="UserTextField.padding" value="0.0,0.5,0.5,0.5" />
         <val key="UserTextField.press#align" value="1" />

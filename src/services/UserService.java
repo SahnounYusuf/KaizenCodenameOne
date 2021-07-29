@@ -12,6 +12,7 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import entities.User;
+import entities.UserState;
 import utils.StaticVars;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ public class UserService {
     ArrayList<String> lastLogin;
     ArrayList<String> userCountLogin;
     ArrayList<String> countLogin;
+    
+    ArrayList<UserState> userState;
     boolean flag = false;
 
     public int addUser(User p) {
@@ -393,4 +396,102 @@ public class UserService {
         }
         return (countLogin);
     }
+    
+    // ========================== User State ==================================
+    // Retrive State info
+    
+    public ArrayList<UserState> retriveUserState(String id) {
+        String url = StaticVars.baseURL + "/getState";
+        ConnectionRequest req = new ConnectionRequest();
+        req.setUrl(url);
+        req.setPost(false);
+
+        req.addArgument("idu", id);
+
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                userState = parseUserState(new String(req.getResponseData()));
+            }
+        });
+
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        System.out.println(userState);
+        return userState;
+    }
+
+    public ArrayList<UserState> parseUserState(String jsonText) {
+        try {
+            userState = new ArrayList<>();
+            JSONParser j = new JSONParser();
+            Map<String, Object> personsListJson
+                    = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+
+            List<Map<String, Object>> list = (List<Map<String, Object>>) personsListJson.get("root");
+            for (Map<String, Object> objet : list) {
+                
+                UserState p = new UserState();
+                
+                float star = Float.parseFloat(objet.get("star").toString());
+                p.setStar((int) star);
+                
+                float flag = Float.parseFloat(objet.get("flag").toString());
+                p.setFlag((int) flag);
+                
+                p.setBlock(objet.get("block").toString());
+
+                userState.add(p);
+
+            }
+        } catch (IOException ex) {
+        }
+        return (userState);
+    }
+    
+    // Add state
+    
+    public int addState(UserState u) {
+        String url = StaticVars.baseURL + "/addState";
+        ConnectionRequest req = new ConnectionRequest();
+        req.setUrl(url);
+        req.setPost(false);
+        req.addArgument("idu", String.valueOf(u.getIdu()));
+        req.addArgument("star", String.valueOf(u.getStar()));
+        req.addArgument("flag", String.valueOf(u.getFlag()));
+        req.addArgument("block", u.getBlock());
+
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                result = req.getResponseCode();
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+        return result;
+    }
+    
+    // Update state
+    
+    public int UpdateState(UserState u) {
+        String url = StaticVars.baseURL + "/updateState";
+        ConnectionRequest req = new ConnectionRequest();
+        req.setUrl(url);
+        req.setPost(false);
+        req.addArgument("star", String.valueOf(u.getStar()));
+        req.addArgument("flag", String.valueOf(u.getFlag()));
+        req.addArgument("block", u.getBlock());
+        req.addArgument("idu", String.valueOf(u.getIdu()));
+
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                result = req.getResponseCode();
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+        return result;
+    }
+    
 }
