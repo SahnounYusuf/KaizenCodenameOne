@@ -67,7 +67,7 @@ public class PieceAddForm extends SideMenuBaseForm {
                                 add(BorderLayout.CENTER, space).
                                 add(BorderLayout.SOUTH,
                                         FlowLayout.encloseIn(
-                                                new Label(" Events", "WelcomeWhite"),
+                                                new Label(" Piece", "WelcomeWhite"),
                                                 new Label("", "WelcomeWhite")
                                         )));
         titleComponent.setUIID("BottomPaddingContainer");
