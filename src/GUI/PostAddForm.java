@@ -18,6 +18,8 @@ public class PostAddForm extends com.codename1.ui.Form {
     
     public PostAddForm(com.codename1.ui.util.Resources resourceObjectInstance) {
         initGuiBuilderComponents(resourceObjectInstance);
+        
+        gui_Text_Field_Post.setUIID("VeloTextField");
     }
 
 //////-- DON'T EDIT BELOW THIS LINE!!!

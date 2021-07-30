@@ -8,14 +8,21 @@ package GUI;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
+import com.codename1.ui.Graphics;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.util.Resources;
 import entities.User;
 import entities.comments;
 import entities.post;
 import services.PostService;
+import services.UserService;
 import utils.StaticVars;
 
 /**
@@ -23,7 +30,7 @@ import utils.StaticVars;
  *
  * @author muhamed
  */
-public class PostListForm extends com.codename1.ui.Form {
+public class PostListForm extends SideMenuBaseForm {
 
     public PostListForm() {
         this(com.codename1.ui.util.Resources.getGlobalResources());
@@ -31,8 +38,48 @@ public class PostListForm extends com.codename1.ui.Form {
     }
 
     public PostListForm(com.codename1.ui.util.Resources resourceObjectInstance) {
+        super(new BorderLayout());
         initGuiBuilderComponents(resourceObjectInstance);
-        this.getToolbar().addMaterialCommandToLeftSideMenu("", FontImage.MATERIAL_ADD, ev
+
+        Toolbar tb = this.getToolbar();
+        tb.setTitleCentered(false);
+        User u = StaticVars.getCurrentUser();
+        Image profilePic = resourceObjectInstance.getImage("user-picture.jpg");
+        Image tintedImage = Image.createImage(profilePic.getWidth(), profilePic.getHeight());
+        Graphics g = tintedImage.getGraphics();
+        g.drawImage(profilePic, 0, 0);
+        g.drawImage(resourceObjectInstance.getImage("gradient-overlay.png"), 0, 0, profilePic.getWidth(), profilePic.getHeight());
+
+        tb.getUnselectedStyle().setBgImage(tintedImage);
+
+        Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+
+        Button settingsButton = new Button("");
+        settingsButton.setUIID("Title");
+        FontImage.setMaterialIcon(settingsButton, FontImage.MATERIAL_SETTINGS);
+
+        Label space = new Label("", "TitlePictureSpace");
+        space.setShowEvenIfBlank(true);
+        Container titleComponent
+                = BorderLayout.north(
+                        BorderLayout.west(menuButton).
+                                add(BorderLayout.CENTER, space).
+                                add(BorderLayout.SOUTH,
+                                        FlowLayout.encloseIn(
+                                                new Label(" Dashbord", "WelcomeWhite"),
+                                                new Label("", "WelcomeWhite")
+                                        )));
+        titleComponent.setUIID("BottomPaddingContainer");
+        tb.setTitleComponent(titleComponent);
+        
+        setupSideMenu(resourceObjectInstance);
+        
+        
+        
+        tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, ev
                 -> System.out.println("add post"));
         gui_cntPost.setLayout(BoxLayout.y());
         for (post p : new services.PostService().getpost()) {
@@ -68,6 +115,11 @@ public class PostListForm extends com.codename1.ui.Form {
     private void guiBuilderBindComponentListeners() {
         EventCallbackClass callback = new EventCallbackClass();
         gui_BtnAddPost.addActionListener(callback);
+    }
+
+    @Override
+    protected void showOtherForm(Resources res) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {

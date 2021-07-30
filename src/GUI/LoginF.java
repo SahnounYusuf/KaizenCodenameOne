@@ -10,7 +10,6 @@ import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
-import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
@@ -36,11 +35,6 @@ public class LoginF extends Form {
 
         getTitleArea().setUIID("Container");
 
-//        Image profilePic = theme.getImage("LogoVelo.jpg");
-//        Image mask = theme.getImage("round-mask.png");
-//        profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
-//        Label profilePicLabel = new Label(profilePic, "ProfilePic");
-//        profilePicLabel.setMask(mask.createMask());
         TextField login = new TextField("1", "Login", 20, TextField.EMAILADDR);
         TextField password = new TextField("123", "Password", 20, TextField.PASSWORD);
 
@@ -64,7 +58,6 @@ public class LoginF extends Form {
         Button loginButton = new Button("Login");
         loginButton.setUIID("LoginButton");
         loginButton.addActionListener(e -> {
-//            Toolbar.setGlobalToolbar(false);
             UserService us = new UserService();
             ArrayList<User> u = us.verifyUser(login.getText(), password.getText());
 
@@ -73,26 +66,19 @@ public class LoginF extends Form {
                     Dialog.show("ERROR", "Your account is banned, Contact admin for more info.", "OK", null);
                 } else {
                     StaticVars.setCurrentUser(u.get(0));
-                    new BlankForm(theme).show();
+                    new PostListForm(theme).show();
                 }
             } else {
                 Dialog.show("ERROR", "Wrong Cin/Password", "OK", null);
             }
-//            Toolbar.setGlobalToolbar(true);
-        }
-        );
+        });
 
         Button createNewAccount = new Button("CREATE NEW ACCOUNT");
 
-        createNewAccount.setUIID(
-                "CreateNewAccountButton");
-        createNewAccount.addActionListener(e
-                -> {
-//            Toolbar.setGlobalToolbar(false);
+        createNewAccount.setUIID("CreateNewAccountButton");
+        createNewAccount.addActionListener(e -> {
             new RegisterForm(theme).show();
-//            Toolbar.setGlobalToolbar(true);
-        }
-        );
+        });
 
         Button btnForget = new Button("Forget Password?");
 
@@ -101,7 +87,6 @@ public class LoginF extends Form {
             new ForgetForm(theme).show();
         });
 
-        // We remove the extra space for low resolution devices so things fit better
         Label spaceLabel;
 
         if (!Display.getInstance()
@@ -113,7 +98,6 @@ public class LoginF extends Form {
 
         Container by = BoxLayout.encloseY(
                 welcome,
-                //                profilePicLabel,
                 spaceLabel,
                 BorderLayout.center(login).
                         add(BorderLayout.WEST, loginIcon),
@@ -127,7 +111,6 @@ public class LoginF extends Form {
 
         add(BorderLayout.CENTER, by);
 
-        // for low res and landscape devices
         by.setScrollableY(
                 true);
         by.setScrollVisible(
