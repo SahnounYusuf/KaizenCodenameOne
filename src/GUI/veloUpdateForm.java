@@ -53,7 +53,7 @@ public class veloUpdateForm extends Form {
         tfWeight.setHint("Weight");
         tfPrice.setHint("Price");
         tfDescription.setHint("Description");
-        
+
         tfidu.setUIID("VeloTextFiled");
         tfBrand.setUIID("VeloTextFiled");
         tfModel.setUIID("VeloTextFiled");
@@ -68,7 +68,7 @@ public class veloUpdateForm extends Form {
         tfPrice.setUIID("VeloTextFiled");
         tfDescription.setUIID("VeloTextFiled");
         Button btnDelete = new Button("Delete");
-        
+
         btnDelete.addActionListener(e -> {
             if (Dialog.show("Delete Velo", "Do you really want to delete this Velo?", "Yes", "No")) {
                 int result = us.deleteVelo(u.getId());
@@ -82,7 +82,7 @@ public class veloUpdateForm extends Form {
         });
         Button btnUpdate = new Button("Update");
         btnUpdate.addActionListener(e -> {
-            Velo v = new Velo(tfidu.getText(), tfBrand.getText(), tfModel.getText(), tfType.getText(), tfSize.getText(), tfWheelsize.getText(),
+            Velo v = new Velo(u.getId(), tfidu.getText(), tfBrand.getText(), tfModel.getText(), tfType.getText(), tfSize.getText(), tfWheelsize.getText(),
                     tfBrakingtype.getText(), tfNumberofspeed.getText(), tfQuantity.getText(), tfColor.getText(), tfWeight.getText(),
                     tfPrice.getText(), tfDescription.getText());
 

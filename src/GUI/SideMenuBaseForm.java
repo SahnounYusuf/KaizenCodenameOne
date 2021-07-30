@@ -57,7 +57,7 @@ public abstract class SideMenuBaseForm extends Form {
             new veloAddForm(res).show();
         });
         getToolbar().addMaterialCommandToSideMenu("  Piece", FontImage.MATERIAL_CHECKLIST, e -> {
-            new BlankForm(res).show();
+            new PieceAddForm(res).show();
         });
         getToolbar().addMaterialCommandToSideMenu("  Event", FontImage.MATERIAL_EVENT, e -> {
             new ListEvent().show();
