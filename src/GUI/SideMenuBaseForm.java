@@ -48,7 +48,7 @@ public abstract class SideMenuBaseForm extends Form {
 
         getToolbar().addComponentToSideMenu(sidemenuTop);
         getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD, e -> {
-            new BlankForm(res).show();
+            new PostListForm(res).show();
         });
         getToolbar().addMaterialCommandToSideMenu("  Rent", FontImage.MATERIAL_MONEY, e -> {
             new BlankForm(res).show();
