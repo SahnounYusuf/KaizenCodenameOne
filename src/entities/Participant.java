@@ -10,8 +10,7 @@ package entities;
  * @author Yassine
  */
 public class Participant {
-
-    int ide, idu;
+    int ide,idu;
 
     public Participant(int ide, int idu) {
         this.ide = ide;
@@ -41,5 +40,8 @@ public class Participant {
     public String toString() {
         return "Participant{" + "ide=" + ide + ", idu=" + idu + '}';
     }
-
+    
+    
+    
+    
 }

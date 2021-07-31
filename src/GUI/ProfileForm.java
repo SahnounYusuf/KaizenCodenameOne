@@ -23,9 +23,9 @@ import services.UserService;
  * @author Sahnoun Yusuf
  */
 public class ProfileForm extends SideMenuBaseForm {
-    
+
     String lastLogin = "";
-    
+
     public ProfileForm(Resources res, User u) {
         super(BoxLayout.y());
 //        setUIID("SettingsForm");
@@ -37,7 +37,7 @@ public class ProfileForm extends SideMenuBaseForm {
         profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
         Label profilePicLabel = new Label(profilePic, "ProfilePicTitle");
         profilePicLabel.setMask(mask.createMask());
-        
+
         Button menuButton = new Button("");
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
@@ -48,19 +48,19 @@ public class ProfileForm extends SideMenuBaseForm {
                 new Label("Opened the app", "CenterSubTitle")
         );
         remainingTasks.setUIID("RemainingTasks");
-        
+
         if (us.retriveUserLastLogin(String.valueOf(u.getId())).isEmpty()) {
             lastLogin = "-";
         } else {
             lastLogin = us.retriveUserLastLogin(String.valueOf(u.getId())).get(0);
         }
-        
+
         Container completedTasks = BoxLayout.encloseY(
                 new Label(lastLogin, "CenterTitle"),
                 new Label("Last seen", "CenterSubTitle")
         );
         completedTasks.setUIID("CompletedTasks");
-        
+
         Container titleCmp = BoxLayout.encloseY(
                 FlowLayout.encloseIn(menuButton),
                 BorderLayout.centerAbsolute(
@@ -76,19 +76,26 @@ public class ProfileForm extends SideMenuBaseForm {
         Label starIcon = new Label("", "StatTextField");
         Label flagIcon = new Label("", "StatTextField");
         Label reportIcon = new Label("", "StatTextField");
-        
+
         starIcon.getAllStyles().setMargin(LEFT, 5);
         flagIcon.getAllStyles().setMargin(LEFT, 2);
         reportIcon.getAllStyles().setMargin(LEFT, 2);
-        
+
         FontImage.setMaterialIcon(starIcon, FontImage.MATERIAL_STAR, 2);
         FontImage.setMaterialIcon(flagIcon, FontImage.MATERIAL_FLAG, 2);
         FontImage.setMaterialIcon(reportIcon, FontImage.MATERIAL_REPORT, 2);
-        
-        Label lbStar = new Label("Trust: " + us.retriveUserState(String.valueOf(u.getId())).get(0).getStar() + "         |");
-        Label lbFlag = new Label("Reports: " + us.retriveUserState(String.valueOf(u.getId())).get(0).getFlag() + "         |");
-        Label lbReport = new Label("Banned: " + us.retriveUserState(String.valueOf(u.getId())).get(0).getBlock() + "         ");
-        
+
+        Label lbStar = new Label("Trust:          |");
+        Label lbFlag = new Label("Reports:          |");
+        Label lbReport = new Label("Banned:          ");
+
+        if (!us.retriveUserState(String.valueOf(u.getId())).isEmpty()) {
+
+            lbStar.setText("Trust: " + us.retriveUserState(String.valueOf(u.getId())).get(0).getStar() + "         |");
+            lbFlag.setText("Reports: " + us.retriveUserState(String.valueOf(u.getId())).get(0).getFlag() + "         |");
+            lbReport.setText("Banned: " + us.retriveUserState(String.valueOf(u.getId())).get(0).getBlock() + "         ");
+        }
+
         Container cntStat = BoxLayout.encloseX(
                 BorderLayout.east(lbStar).
                         add(BorderLayout.CENTER, starIcon),
@@ -97,7 +104,7 @@ public class ProfileForm extends SideMenuBaseForm {
                 BorderLayout.center(lbReport).
                         add(BorderLayout.WEST, reportIcon)
         );
-        
+
         lbStar.setUIID("StatTextField");
         lbFlag.setUIID("StatTextField");
         lbReport.setUIID("StatTextField");
@@ -111,7 +118,7 @@ public class ProfileForm extends SideMenuBaseForm {
             userState.setBlock("No");
             us.addState(userState);
         }
-        
+
         FloatingActionButton fab = FloatingActionButton.createFAB(FontImage.MATERIAL_ADD);
         fab.createSubFAB(FontImage.MATERIAL_STAR, "").addActionListener((evt) -> {
             UserState userState = new UserState();
@@ -138,7 +145,7 @@ public class ProfileForm extends SideMenuBaseForm {
             userState.setFlag(us.retriveUserState(String.valueOf(u.getId())).get(0).getFlag());
             if (us.retriveUserState(String.valueOf(u.getId())).get(0).getBlock().equals("No")) {
                 userState.setBlock("Yes");
-            }else {
+            } else {
                 userState.setBlock("No");
             }
             us.UpdateState(userState);
@@ -147,14 +154,14 @@ public class ProfileForm extends SideMenuBaseForm {
         fab.getAllStyles().setMarginUnit(Style.UNIT_TYPE_PIXELS);
         fab.getAllStyles().setMargin(BOTTOM, completedTasks.getPreferredH() - fab.getPreferredH() / 2);
         tb.setTitleComponent(fab.bindFabToContainer(titleCmp, CENTER, BOTTOM));
-        
+
         Label lbCin = new Label(String.valueOf(u.getId()), "TodayTitle");
         Label lbFirst = new Label(u.getNom(), "TodayTitle");
         Label lbLast = new Label(u.getPrenom(), "TodayTitle");
         Label lbEmail = new Label(u.getEmail(), "TodayTitle");
         Label lbPhone = new Label(String.valueOf(u.getPhone()), "TodayTitle");
         Label lbRole = new Label(u.getRole(), "TodayTitle");
-        
+
         Button deleteButton = new Button("Delete");
         deleteButton.setUIID("DeleteProfil");
         deleteButton.addActionListener(e -> {
@@ -172,9 +179,9 @@ public class ProfileForm extends SideMenuBaseForm {
                     }
                 }
             }
-            
+
         });
-        
+
         Button userButton = new Button("Make User");
         userButton.setUIID("ProfilButton");
         userButton.addActionListener(e -> {
@@ -192,7 +199,7 @@ public class ProfileForm extends SideMenuBaseForm {
                 }
             }
         });
-        
+
         Button moderatorButton = new Button("Make Moderator");
         moderatorButton.setUIID("ProfilButton");
         moderatorButton.addActionListener(e -> {
@@ -209,13 +216,13 @@ public class ProfileForm extends SideMenuBaseForm {
                 }
             }
         });
-        
+
         Container cntButtons = BoxLayout.encloseXCenter(
                 BorderLayout.center(userButton),
                 BorderLayout.center(moderatorButton),
                 BorderLayout.center(deleteButton)
         );
-        
+
         addAll(
                 BorderLayout.center(cntStat),
                 BorderLayout.center(lbCin),
@@ -226,10 +233,10 @@ public class ProfileForm extends SideMenuBaseForm {
                 BorderLayout.center(lbRole),
                 BorderLayout.center(cntButtons)
         );
-        
+
         setupSideMenu(res);
     }
-    
+
     @Override
     protected void showOtherForm(Resources res) {
         new SettingsForm(res).show();

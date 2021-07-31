@@ -18,9 +18,11 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
+import com.codename1.util.StringUtil;
 import entities.Event;
 import entities.Participant;
 import entities.User;
+import java.util.List;
 import services.ServiceEvent;
 import services.ServiceParticipant;
 import services.UserService;
@@ -60,8 +62,8 @@ public class ListEvent extends SideMenuBaseForm  {
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
         menuButton.addActionListener(e -> getToolbar().openSideMenu());
-        this.getToolbar().addMaterialCommandToRightBar("Add Event", FontImage.MATERIAL_ADD,3, ev->
-                new AddEvent().show());
+//        this.getToolbar().addMaterialCommandToRightBar("Add Event", FontImage.MATERIAL_ADD,3, ev->
+//                new AddEvent().show());
         
 
         Button settingsButton = new Button("");
@@ -88,7 +90,7 @@ public class ListEvent extends SideMenuBaseForm  {
 
         for (Event e : new ServiceEvent().getEvent()) {
             //this.add(getEvent(p));
-            Button mb = new Button(e.getEvent_name());
+            Button mb = new Button(e.getEvent_name()+" "+e.getDate());
             mb.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                     //Dialog.show("test", "personne avec l'id "+p.getId(), "OK", null);
@@ -98,6 +100,8 @@ public class ListEvent extends SideMenuBaseForm  {
                     detevt.gui_date.setText(e.getDate());
                     detevt.gui_heure.setText(e.getHeure());
                     detevt.gui_place.setText(e.getPlace());
+                    List<String> st =StringUtil.tokenize(e.getPlace(),",");
+                    detevt.gui_Textgeorev.setText(new ServiceEvent().getAdress(st.get(0),st.get(1)));
                     System.out.println(e.getIdu());
                     detevt.evt = e;
                     
@@ -107,11 +111,11 @@ public class ListEvent extends SideMenuBaseForm  {
         if(u.getId()==e.getIdu()){
            detevt.gui_BtnUpdateEvent.setEnabled(true);
            detevt.gui_BtnDeleteEvent.setEnabled(true);
-           detevt.gui_BtnParticipate.setEnabled(false);
+           
         }else{
            detevt.gui_BtnUpdateEvent.setEnabled(false);
            detevt.gui_BtnDeleteEvent.setEnabled(false);
-           detevt.gui_BtnParticipate.setEnabled(true);
+           
             
         }
                     
@@ -152,7 +156,7 @@ public class ListEvent extends SideMenuBaseForm  {
 //        }
     }
 
-//////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
     protected com.codename1.ui.Container gui_Container = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
     protected com.codename1.ui.Container gui_Container_1 = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.X_AXIS));
     protected com.codename1.ui.Button gui_BtnAddEvent = new com.codename1.ui.Button();

@@ -40,7 +40,7 @@ public class RegisterForm extends Form {
         TextField tfEmail = new TextField("", "Email", 20, TextField.EMAILADDR);
         TextField tfPhone = new TextField("", "Phone", 20, TextField.PHONENUMBER);
         TextField password = new TextField("", "Password", 20, TextField.PASSWORD);
-        
+
         tfCin.setUIID("RegisterTextField");
         tfFirst.setUIID("RegisterTextField");
         tfLast.setUIID("RegisterTextField");
@@ -69,10 +69,16 @@ public class RegisterForm extends Form {
             u.setPhone(Integer.valueOf(tfPhone.getText()));
             u.setPassword(password.getText());
             int result = us.addUser(u);
-            if (result == 200) {
-                Dialog.show("SUCCESS", "Welcome to the family", "OK", null);
+            if (tfCin.getText().length() == 0 || tfLast.getText().length() == 0  || tfFirst.getText().length() == 0 || 
+                    tfEmail.getText().length() == 0 || tfPhone.getText().length() == 0 || password.getText().length() == 0) {
+                Dialog.show("ERROR", "Fields must be all filled", "OK", null);
+                return;
             } else {
-                Dialog.show("ERROR", "Oops! something went wrong.", "OK", null);
+                if (result == 200) {
+                    Dialog.show("SUCCESS", "Welcome to the family", "OK", null);
+                } else {
+                    Dialog.show("ERROR", "Oops! something went wrong.", "OK", null);
+                }
             }
 
 //            new WalkthruForm(theme).show();

@@ -8,6 +8,7 @@ package GUI;
 import com.codename1.ui.Button;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Form;
+import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -34,10 +35,15 @@ public class PieceUpdateForm extends Form {
         TextField tfPrix = new TextField(p.getPrix());
         
         tfIdu.setHint("Idu");
-        tfNom.setHint("Nom");
+        tfNom.setHint("Name");
         tfType.setHint("Type");
         tfDescription.setHint("Description");
-        tfPrix.setHint("Prix");
+        tfPrix.setHint("Price");
+        
+        Label lbNom = new Label("Name");
+        Label lbDescription = new Label("Description ");
+        Label lbType = new Label("Type");
+        Label lbPrix = new Label("Price");
         
         tfIdu.setUIID("VeloTextField");
         tfNom.setUIID("VeloTextField");
@@ -48,42 +54,41 @@ public class PieceUpdateForm extends Form {
         Button btnDelete = new Button("Delete");
 
         btnDelete.addActionListener(e -> {
-            if (Dialog.show("Delete Piece", "Do you really want to delete this Piece?", "Yes", "No")) {
+            if (Dialog.show("Delete Piece", "do you want to delete this piese?", "Yes", "No")) {
                 int result = us.deletePiece(p.getIdp());
                 if (result == 200) {
                     Dialog.show("Success", "Piece deleted", "OK", null);
                 } else {
-                    Dialog.show("ERROR", "Server error", "OK", null);
+                    Dialog.show("ERROR", "SERVER ERROR", "OK", null);
                 }
             }
         });
-        Button btnUpdate = new Button("Update");
+        Button btnUpdate = new Button("Modifiy");
 
         btnUpdate.addActionListener(e -> {
 
             Piece v = new Piece();
             v.setIdp(p.getIdp());
-            v.setIdu(Integer.parseInt(tfIdu.getText()));
+           v.setIdu(p.getIdu());
             v.setType(tfType.getText());
             v.setNom(tfNom.getText());
             v.setDescription(tfDescription.getText());
             v.setPrix(tfPrix.getText());
 
             if (us.modifyPiece(v) == 200) {
-                Dialog.show("Success", "Piece modified", "OKAY", null);
+                Dialog.show("Succees", "Piece modified", "OK", null);
             } else {
-                Dialog.show("Failed", "Server Error", "OKAY", null);
+                Dialog.show("ERROR", "SERVER ERROR", "OK", null);
             }
         });
         Button btnBack = new Button("Back");
         btnBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                new PieceAddForm(res).show();
+                new PieceDisplayForm(res).show();
             }
         });
 
-        this.addAll(tfIdu, tfNom, tfType, tfDescription, tfPrix, btnUpdate, btnDelete, btnBack);
-
+ this.addAll( lbNom,tfNom,lbType, tfType,lbDescription, tfDescription,lbPrix, tfPrix, btnUpdate, btnDelete, btnBack);
     }
 
 }

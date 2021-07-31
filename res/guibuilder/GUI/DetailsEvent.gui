@@ -3,22 +3,29 @@
 <component type="Form" layout="LayeredLayout" layeredLayoutPreferredWidthMM="0.0" layeredLayoutPreferredHeightMM="0.0"  autolayout="true" styles="alignment:center;" title="Details Event" scrollableY="false" name="DetailsEvent">
   <component type="Container" layout="BoxLayout" boxLayoutAxis="X"  styles="margin:inherit inherit inherit 40px;" preferredSize="214.01355mm 25.4022mm" name="ContainerBTN">
     <layoutConstraint insets="0.0mm 0.0mm auto 1.4817951mm" referenceComponents="5 1 -1 -1" referencePositions="1.0 0.0 0.0 0.0" />
-    <component type="Button" text="Update" icon="fontImage:e923" name="BtnUpdateEvent" actionEvent="true">
+    <component type="Button" text="Update" icon="fontImage:e923" pressedIcon="fontImage:e923" name="BtnUpdateEvent" actionEvent="true">
     </component>
-    <component type="Button" text="Delete" preferredSize="inherit 8.890771mm" icon="fontImage:e872" name="BtnDeleteEvent" actionEvent="true">
+    <component type="Button" text="Delete" preferredSize="inherit 8.890771mm" icon="fontImage:e872" pressedIcon="fontImage:e872" name="BtnDeleteEvent" actionEvent="true">
     </component>
-    <component type="Button" text="Participate" preferredSize="inherit 8.467401mm" icon="fontImage:e3ba" name="BtnParticipate" actionEvent="true">
+    <component type="Button" text="Participate" preferredSize="inherit 8.467401mm" icon="fontImage:e3ba" pressedIcon="fontImage:e3ba" name="BtnParticipate" actionEvent="true">
     </component>
   </component>
-  <component type="Container" layout="BoxLayout" boxLayoutAxis="Y"  preferredSize="inherit 31.75275230407715mm" name="Container">
-    <layoutConstraint insets="0.0mm 0.0mm 74.5098% 0.0mm" referenceComponents="2 -1 -1 2 " referencePositions="0.0 0.0 0.0 1.0" />
-    <component type="Label" text="1" preferredSize="101.18544mm 6.1388655mm" name="event_name">
+  <component type="Container" layout="LayeredLayout" layeredLayoutPreferredWidthMM="188.18797" layeredLayoutPreferredHeightMM="53.55631"  preferredSize="inherit 53.55631mm" name="Container">
+    <layoutConstraint insets="0.0mm 0.0mm 64.70588% 0.0mm" referenceComponents="2 -1 -1 2 " referencePositions="0.0 0.0 0.0 1.0" />
+    <component type="Label" text="1" preferredSize="186.2828mm 6.1388655mm" name="event_name">
+      <layoutConstraint insets="0.0mm 1.0584259mm auto 0.0mm" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
     </component>
-    <component type="Label" text="1" preferredSize="101.18544mm 6.1388655mm" name="date">
+    <component type="Label" text="1" preferredSize="185.0127mm 6.1388655mm" name="date">
+      <layoutConstraint insets="1.6934801mm -1.9073486E-6mm auto 0.0mm" referenceComponents="0 3 -1 0 " referencePositions="1.0 1.0 0.0 0.0" />
     </component>
-    <component type="Label" text="1" preferredSize="101.18544mm 6.1388655mm" name="heure">
+    <component type="Label" text="1" preferredSize="185.64775mm 7.4089756mm" name="heure">
+      <layoutConstraint insets="35.897434% auto auto 0.0mm" referenceComponents="-1 -1 -1 0 " referencePositions="0.0 0.0 0.0 0.0" />
     </component>
-    <component type="Label" text="1" preferredSize="101.18544mm 6.1388655mm" name="place">
+    <component type="Label" text="1" styles="bgColor:fffaf9; fgColor:ffffff;" preferredSize="0.0mm 6.1388655mm" name="place">
+      <layoutConstraint insets="auto 1.6934814mm 0.0mm 98.76266%" referenceComponents="2 -1 -1 0 " referencePositions="1.0 0.0 0.0 0.0" />
+    </component>
+    <component type="TextArea" text="" preferredSize="185.0127mm 21.380186mm" enabled="false" editable="false" rtl="true" rows="2" columns="8" name="Textgeorev">
+      <layoutConstraint insets="1.6934801mm 3.33786E-6mm 1.058425mm 0.0mm" referenceComponents="2 0 3 -1" referencePositions="1.0 0.0 0.0 0.0" />
     </component>
   </component>
   <component type="Container" layout="BoxLayout" boxLayoutAxis="Y"  preferredSize="inherit 38.526672mm" name="Container_1">
@@ -33,8 +40,8 @@
     </component>
   </component>
   <component type="Container" layout="LayeredLayout" layeredLayoutPreferredWidthMM="213.59018" layeredLayoutPreferredHeightMM="10.372565"  preferredSize="213.59018mm 10.160881mm" name="Container_2">
-    <layoutConstraint insets="0.0mm 0.0mm 90.97744% 0.0mm" referenceComponents="1 -1 -1 0 " referencePositions="1.0 0.0 0.0 0.0" />
-    <component type="Button" text="Show Map" preferredSize="inherit 14.606266mm" icon="fontImage:e41b" name="BtnShowMap" actionEvent="true">
+    <layoutConstraint insets="0.0mm auto auto 0.0mm" referenceComponents="1 -1 -1 2 " referencePositions="1.0 0.0 0.0 0.0" />
+    <component type="Button" text="Show Map" preferredSize="inherit 14.606266mm" icon="fontImage:e41b" pressedIcon="fontImage:e41b" name="BtnShowMap" actionEvent="true">
       <layoutConstraint insets="0.0mm 1.0584259mm 0.0mm auto" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
     </component>
     <component type="Label" text="Participants" preferredSize="inherit 9.102455mm" icon="fontImage:e7fb" name="Label_participant">
@@ -47,7 +54,7 @@
       <layoutConstraint insets="0.0mm 1.058424mm 0.0mm auto" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
     </component>
   </component>
-  <component type="Container" layout="BoxLayout" boxLayoutAxis="Y"  preferredSize="215.07198mm 74.93649mm" scrollableX="true" name="Container_Participants">
-    <layoutConstraint insets="40.32059% auto 16.029593% 0.0mm" referenceComponents="-1 -1 -1 2 " referencePositions="0.0 0.0 0.0 0.0" />
+  <component type="Container" layout="BoxLayout" boxLayoutAxis="Y"  preferredSize="215.07198mm 63.29382mm" scrollableX="false" name="Container_Participants">
+    <layoutConstraint insets="0.0mm auto 30.092592% 0.0mm" referenceComponents="3 -1 -1 2 " referencePositions="1.0 0.0 0.0 0.0" />
   </component>
 </component>

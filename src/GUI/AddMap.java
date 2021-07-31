@@ -12,14 +12,17 @@ import com.codename1.maps.MapComponent;
 import com.codename1.maps.layers.PointLayer;
 import com.codename1.maps.layers.PointsLayer;
 import com.codename1.ui.Image;
+import com.codename1.util.StringUtil;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import services.ServiceEvent;
 
 /**
  * GUI builder created Form
@@ -61,7 +64,7 @@ gui_map.addComponent(mc);
         
     }
 
-//////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
     protected com.codename1.ui.Button gui_BtnAddPlace = new com.codename1.ui.Button();
     protected com.codename1.ui.Container gui_Container_2 = new com.codename1.ui.Container(new com.codename1.ui.layouts.LayeredLayout());
     protected com.codename1.ui.Container gui_map = new com.codename1.ui.Container(new com.codename1.ui.layouts.FlowLayout());
@@ -148,6 +151,9 @@ gui_map.addComponent(mc);
         addevent.gui_date.setText(addevt.gui_date.getText());
         addevent.gui_heure.setText(addevt.gui_heure.getText());
         
+        List<String> st =StringUtil.tokenize(mc.getCenter().getLatitude()+","+mc.getCenter().getLongitude(),",");
+        addevent.gui_Textgeorev.setText(new ServiceEvent().getAdress(st.get(0),st.get(1)));
+                    
         addevent.show();
 
     }

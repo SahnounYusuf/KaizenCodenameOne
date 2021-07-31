@@ -36,7 +36,7 @@ public class UpdateEvent extends com.codename1.ui.Form {
         
     }
 
-////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
     protected com.codename1.ui.Container gui_Container = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.X_AXIS));
     protected com.codename1.ui.Button gui_BtnSaveChenges = new com.codename1.ui.Button();
     protected com.codename1.ui.Button gui_BtnCancel = new com.codename1.ui.Button();
@@ -50,6 +50,7 @@ public class UpdateEvent extends com.codename1.ui.Form {
     protected com.codename1.ui.spinner.Picker gui_date = new com.codename1.ui.spinner.Picker();
     protected com.codename1.ui.spinner.Picker gui_heure = new com.codename1.ui.spinner.Picker();
     protected com.codename1.ui.TextField gui_place = new com.codename1.ui.TextField();
+    protected com.codename1.ui.TextArea gui_Textgeorev = new com.codename1.ui.TextArea();
     protected com.codename1.ui.Container gui_Container_3 = new com.codename1.ui.Container(new com.codename1.ui.layouts.LayeredLayout());
     protected com.codename1.ui.Button gui_BtnUpdateMap = new com.codename1.ui.Button();
 
@@ -106,7 +107,7 @@ public class UpdateEvent extends com.codename1.ui.Form {
         gui_Container_1.setPreferredSizeStr("22.438612mm 36.19814mm");
                 gui_Container_1.setInlineStylesTheme(resourceObjectInstance);
         gui_Container_1.setName("Container_1");
-        gui_Container_2.setPreferredSizeStr("192.63336mm 36.19814mm");
+        gui_Container_2.setPreferredSizeStr("192.63336mm 48.687553mm");
                 gui_Container_2.setInlineStylesTheme(resourceObjectInstance);
         gui_Container_2.setName("Container_2");
         gui_Container_3.setPreferredSizeStr("215.07198mm 12.7011mm");
@@ -148,6 +149,7 @@ public class UpdateEvent extends com.codename1.ui.Form {
         gui_Container_1.addComponent(gui_Label_2);
         gui_Container_1.addComponent(gui_Label_3);
         addComponent(gui_Container_2);
+        gui_event_name.setPreferredSizeStr("86.790855mm inherit");
         gui_event_name.setText("TextField");
                 gui_event_name.setInlineStylesTheme(resourceObjectInstance);
         gui_event_name.setInlineAllStyles("font:native:MainBold native:MainBold; border:1.0px solid 0; bgColor:70101; fgColor:0; bgImage:null;");
@@ -164,14 +166,23 @@ public class UpdateEvent extends com.codename1.ui.Form {
         gui_heure.setInlineAllStyles("font:native:MainBold native:MainBold; fgColor:90001;");
         gui_heure.setName("heure");
         gui_heure.setType(2);
+        gui_place.setPreferredSizeStr("0.84674007mm inherit");
         gui_place.setText("TextField");
                 gui_place.setInlineStylesTheme(resourceObjectInstance);
         gui_place.setInlineAllStyles("border:1.0px solid 0; fgColor:70101;");
         gui_place.setName("place");
+        gui_Textgeorev.setPreferredSizeStr("189.2464mm 10.58425mm");
+        gui_Textgeorev.setEditable(false);
+        gui_Textgeorev.setEnabled(false);
+        gui_Textgeorev.setText("TextArea");
+                gui_Textgeorev.setInlineStylesTheme(resourceObjectInstance);
+        gui_Textgeorev.setName("Textgeorev");
+        gui_Textgeorev.setColumns(8);
         gui_Container_2.addComponent(gui_event_name);
         gui_Container_2.addComponent(gui_date);
         gui_Container_2.addComponent(gui_heure);
         gui_Container_2.addComponent(gui_place);
+        gui_Container_2.addComponent(gui_Textgeorev);
         addComponent(gui_Container_3);
         gui_BtnUpdateMap.setText("Map");
                 gui_BtnUpdateMap.setInlineStylesTheme(resourceObjectInstance);
@@ -181,10 +192,10 @@ public class UpdateEvent extends com.codename1.ui.Form {
         ((com.codename1.ui.layouts.LayeredLayout)gui_BtnUpdateMap.getParent().getLayout()).setInsets(gui_BtnUpdateMap, "auto 10.629921% 2.7519052mm auto").setReferenceComponents(gui_BtnUpdateMap, "-1 -1 -1 -1").setReferencePositions(gui_BtnUpdateMap, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Container.getParent().getLayout()).setInsets(gui_Container, "80.27127% 0.0mm 11.960543% 0.0mm").setReferenceComponents(gui_Container, "-1 -1 -1 -1").setReferencePositions(gui_Container, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Container_1.getParent().getLayout()).setInsets(gui_Container_1, "13.316895% auto 65.72133% 0.0mm").setReferenceComponents(gui_Container_1, "-1 -1 -1 -1").setReferencePositions(gui_Container_1, "0.0 0.0 0.0 0.0");
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_2.getParent().getLayout()).setInsets(gui_Container_2, "0.0mm 0.0mm 0.0mm 0.0mm").setReferenceComponents(gui_Container_2, "1 0 1 1 ").setReferencePositions(gui_Container_2, "0.0 0.0 0.0 1.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_2.getParent().getLayout()).setInsets(gui_Container_2, "0.0mm auto auto 0.0mm").setReferenceComponents(gui_Container_2, "1 0 -1 1 ").setReferencePositions(gui_Container_2, "0.0 0.0 0.0 1.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Container_3.getLayout()).setPreferredWidthMM((float)215.07198);
         ((com.codename1.ui.layouts.LayeredLayout)gui_Container_3.getLayout()).setPreferredHeightMM((float)12.7011);
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_3.getParent().getLayout()).setInsets(gui_Container_3, "0.0mm 2.5402203mm auto 0.0mm").setReferenceComponents(gui_Container_3, "1 0 -1 -1").setReferencePositions(gui_Container_3, "1.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_3.getParent().getLayout()).setInsets(gui_Container_3, "11.090225% 2.5402203mm auto 0.0mm").setReferenceComponents(gui_Container_3, "1 0 -1 0 ").setReferencePositions(gui_Container_3, "1.0 0.0 0.0 0.0");
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
@@ -194,7 +205,6 @@ public class UpdateEvent extends com.codename1.ui.Form {
         Event p = new Event(evtupdate.getId(), u.getId(), gui_event_name.getText(), gui_date.getText(), gui_heure.getText(), gui_place.getText());
         System.out.println(gui_place.getText());
         System.out.println(p.getPlace());
-
         ServiceEvent sp = new ServiceEvent();
         if (sp.updateEvent(p) == 200) {
 
@@ -220,6 +230,10 @@ public class UpdateEvent extends com.codename1.ui.Form {
         detevt.gui_date.setText(gui_date.getText());
         detevt.gui_heure.setText(gui_heure.getText());
         detevt.gui_place.setText(gui_place.getText());
+        
+        List<String> st =StringUtil.tokenize(evtupdate.getPlace(),",");
+        detevt.gui_Textgeorev.setText(new ServiceEvent().getAdress(st.get(0),st.get(1)));
+                    
 
         detevt.evt = evtupdate;
         
@@ -229,11 +243,11 @@ public class UpdateEvent extends com.codename1.ui.Form {
         if(u.getId()==evtupdate.getIdu()){
            detevt.gui_BtnUpdateEvent.setEnabled(true);
            detevt.gui_BtnDeleteEvent.setEnabled(true);
-           detevt.gui_BtnParticipate.setEnabled(false);
+           
         }else{
            detevt.gui_BtnUpdateEvent.setEnabled(false);
            detevt.gui_BtnDeleteEvent.setEnabled(false);
-           detevt.gui_BtnParticipate.setEnabled(true);
+           
             
         }
         
@@ -251,6 +265,7 @@ public class UpdateEvent extends com.codename1.ui.Form {
         upev.gui_date=gui_date;
         upev.gui_heure=gui_heure;
         upev.gui_place=gui_place;
+        
         UpdateMap upmap = new UpdateMap();
         upmap.updatemapevent= evtupdate;
         upmap.upevt=upev;
