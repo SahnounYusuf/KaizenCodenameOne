@@ -12,6 +12,7 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import entities.Event;
+import entities.Participant;
 import utils.StaticVars;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class ServiceEvent {
     int result = 0;
     ArrayList<Event> events;
     
+    
 
     public int addEvent(Event p) {
         String url = StaticVars.baseURL + "/addEvent";
@@ -33,7 +35,7 @@ public class ServiceEvent {
         req.setUrl(url);
         req.setPost(true);
 //        req.addArgument( "idu", p.getIdu());
-        req.addArgument( "idu", "3");
+        req.addArgument( "idu", String.valueOf(p.getIdu()));
         req.addArgument("event_name", p.getEvent_name());
         req.addArgument("date", p.getDate());
         req.addArgument("heure", p.getHeure());
@@ -56,12 +58,13 @@ public class ServiceEvent {
         ConnectionRequest req = new ConnectionRequest();
         req.setUrl(url);
         req.setPost(true);
-//        req.addArgument( "idu", p.getIdu());
+//        req.addArgument( "idu", p.getId());
         req.addArgument( "id", String.valueOf(p.getId()));
         req.addArgument("event_name", p.getEvent_name());
         req.addArgument("date", p.getDate());
         req.addArgument("heure", p.getHeure());
         req.addArgument("place", p.getPlace());
+        System.out.println(p.getPlace());
         
        
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -139,6 +142,12 @@ public class ServiceEvent {
 
         return events;
     }
+    
+    
+    
+    
+    
+    
 
     public ArrayList<Event> parsePersons(String jsonText) {
         try {

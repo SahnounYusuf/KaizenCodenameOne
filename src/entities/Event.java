@@ -10,7 +10,8 @@ package entities;
  * @author Yassine
  */
 public class Event {
-        private int id;
+
+    private int id;
     private int idu;
     private String event_name;
     private String date;
@@ -26,11 +27,6 @@ public class Event {
         this.place = place;
     }
 
-    
-      
-    
-    
-    
     public Event(int idu, String event_name, String date, String heure, String place) {
         this.idu = idu;
         this.event_name = event_name;
@@ -101,5 +97,5 @@ public class Event {
     public String toString() {
         return "Event{" + "id=" + id + ", idu=" + idu + ", event_name=" + event_name + ", date=" + date + ", heure=" + heure + ", place=" + place + '}';
     }
-    
+
 }

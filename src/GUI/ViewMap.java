@@ -12,10 +12,12 @@ import com.codename1.maps.layers.PointsLayer;
 import com.codename1.ui.Image;
 import com.codename1.util.StringUtil;
 import entities.Event;
+import entities.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import utils.StaticVars;
 
 
 /**
@@ -26,6 +28,7 @@ import java.util.StringTokenizer;
 public class ViewMap extends com.codename1.ui.Form {
     MapComponent mc = new MapComponent();
     DetailsEvent de = new DetailsEvent();
+    Event ee =new Event();
 
     public ViewMap() {
         this(com.codename1.ui.util.Resources.getGlobalResources());
@@ -39,7 +42,7 @@ public class ViewMap extends com.codename1.ui.Form {
     }
     
     
-////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
     protected com.codename1.ui.Button gui_BtnReturn = new com.codename1.ui.Button();
     protected com.codename1.ui.Container gui_Container_2 = new com.codename1.ui.Container(new com.codename1.ui.layouts.LayeredLayout());
     protected com.codename1.ui.Container gui_map = new com.codename1.ui.Container(new com.codename1.ui.layouts.FlowLayout());
@@ -110,7 +113,21 @@ public class ViewMap extends com.codename1.ui.Form {
         devent.gui_date.setText(de.gui_date.getText());
         devent.gui_heure.setText(de.gui_heure.getText());
         devent.gui_place.setText(de.gui_place.getText());
-
+        devent.evt=ee;
+        
+        User u = StaticVars.getCurrentUser();
+        System.out.println(u.getId()+" "+ee.getIdu());
+        if(u.getId()== ee.getIdu()){
+           devent.gui_BtnUpdateEvent.setEnabled(true);
+           devent.gui_BtnDeleteEvent.setEnabled(true);
+           devent.gui_BtnParticipate.setEnabled(false);
+        }else{
+           devent.gui_BtnUpdateEvent.setEnabled(false);
+           devent.gui_BtnDeleteEvent.setEnabled(false);
+           devent.gui_BtnParticipate.setEnabled(true);
+            
+        }
+        
         
         
         devent.show();

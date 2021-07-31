@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" layout="LayeredLayout" layeredLayoutPreferredWidthMM="0.0" layeredLayoutPreferredHeightMM="0.0"  autolayout="true" title="Update Event" scrollableY="false" name="UpdateEvent">
+  <component type="Container" layout="BoxLayout" boxLayoutAxis="X"  preferredSize="215.07198mm 13.336156mm" name="Container">
+    <layoutConstraint insets="80.27127% 0.0mm 11.960543% 0.0mm" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+    <component type="Button" text="Save Changes" icon="fontImage:e161" name="BtnSaveChenges" actionEvent="true">
+    </component>
+    <component type="Button" text="Cancel" icon="fontImage:e5c9" name="BtnCancel" actionEvent="true">
+    </component>
+  </component>
+  <component type="Container" layout="BoxLayout" boxLayoutAxis="Y"  preferredSize="22.438612mm 36.19814mm" name="Container_1">
+    <layoutConstraint insets="13.316895% auto 65.72133% 0.0mm" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+    <component type="Label" text="Event Name" styles="font:native:MainBold native:MainBold; margin:inherit inherit 3px inherit;" preferredSize="22.861982mm inherit" name="Label">
+    </component>
+    <component type="Label" text="Date" styles="font:native:MainBold native:MainBold; margin:inherit inherit 3px inherit;" preferredSize="19.051651mm inherit" name="Label_1">
+    </component>
+    <component type="Label" text="Heure" styles="font:native:MainBold native:MainBold; margin:inherit inherit 3px inherit;" preferredSize="19.051651mm inherit" name="Label_2">
+    </component>
+    <component type="Label" text="Place" styles="font:native:MainBold native:MainBold; margin:inherit inherit 3px inherit;" name="Label_3">
+    </component>
+  </component>
+  <component type="Container" layout="BoxLayout" boxLayoutAxis="Y"  preferredSize="192.63336mm 36.19814mm" name="Container_2">
+    <layoutConstraint insets="0.0mm 0.0mm 0.0mm 0.0mm" referenceComponents="1 0 1 1 " referencePositions="0.0 0.0 0.0 1.0" />
+    <component type="TextField" text="TextField" styles="font:native:MainBold native:MainBold; border:1.0px solid 0; bgColor:70101; fgColor:0; bgImage:null;" columns="20" name="event_name">
+    </component>
+    <component type="Picker" text="JJ/MM/AAAA" styles="font:native:MainBold native:MainBold; fgColor:90001;" preferredSize="74.72481mm inherit" pickerType="1" name="date">
+    </component>
+    <component type="Picker" text="00:00" styles="font:native:MainBold native:MainBold; fgColor:90001;" pickerType="2" name="heure">
+    </component>
+    <component type="TextField" text="TextField" styles="border:1.0px solid 0; fgColor:70101;" name="place">
+    </component>
+  </component>
+  <component type="Container" layout="LayeredLayout" layeredLayoutPreferredWidthMM="215.07198" layeredLayoutPreferredHeightMM="12.7011"  preferredSize="215.07198mm 12.7011mm" name="Container_3">
+    <layoutConstraint insets="0.0mm 2.5402203mm auto 0.0mm" referenceComponents="1 0 -1 -1" referencePositions="1.0 0.0 0.0 0.0" />
+    <component type="Button" text="Map" icon="fontImage:e55b" name="BtnUpdateMap" actionEvent="true">
+      <layoutConstraint insets="auto 10.629921% 2.7519052mm auto" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+    </component>
+  </component>
+</component>
