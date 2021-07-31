@@ -5,6 +5,12 @@
  */
 package GUI;
 
+import com.codename1.ui.Dialog;
+import entities.User;
+import entities.post;
+import services.PostService;
+import utils.StaticVars;
+
 /**
  * GUI builder created Form
  *
@@ -15,11 +21,30 @@ public class PostAddForm extends com.codename1.ui.Form {
     public PostAddForm() {
         this(com.codename1.ui.util.Resources.getGlobalResources());
     }
-    
+
     public PostAddForm(com.codename1.ui.util.Resources resourceObjectInstance) {
         initGuiBuilderComponents(resourceObjectInstance);
-        
+        User user = StaticVars.getCurrentUser();
         gui_Text_Field_Post.setUIID("VeloTextField");
+        gui_Text_Field_Post.setHint("Write something...");
+        gui_Text_Field_Post.setText("Write something...");
+        gui_BtnBack.addActionListener(e -> {
+            new PostListForm().show();
+        });
+
+        gui_BtnAddPost.addActionListener(e -> {
+            post p = new post();
+            p.setDescription(gui_Text_Field_Post.getText());
+            p.setIdu(user.getId());
+            p.setPostedby(user.getNom() + " " + user.getPrenom());
+            PostService ps = new PostService();
+            if (ps.addpost(p) == 200) {
+                Dialog.show("Success", "Post added", "ok", null);
+            }
+            else {
+                Dialog.show("Failed", "Server Error", "ok", null);
+            }
+        });
     }
 
 //////-- DON'T EDIT BELOW THIS LINE!!!
@@ -31,7 +56,6 @@ public class PostAddForm extends com.codename1.ui.Form {
     protected com.codename1.ui.Button gui_BtnBack = new com.codename1.ui.Button();
     protected com.codename1.ui.Button gui_BtnAddPost = new com.codename1.ui.Button();
 
-
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void guiBuilderBindComponentListeners() {
         EventCallbackClass callback = new EventCallbackClass();
@@ -40,7 +64,9 @@ public class PostAddForm extends com.codename1.ui.Form {
     }
 
     class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {
+
         private com.codename1.ui.Component cmp;
+
         public EventCallbackClass(com.codename1.ui.Component cmp) {
             this.cmp = cmp;
         }
@@ -51,14 +77,14 @@ public class PostAddForm extends com.codename1.ui.Form {
         public void actionPerformed(com.codename1.ui.events.ActionEvent ev) {
             com.codename1.ui.Component sourceComponent = ev.getComponent();
 
-            if(sourceComponent.getParent().getLeadParent() != null && (sourceComponent.getParent().getLeadParent() instanceof com.codename1.components.MultiButton || sourceComponent.getParent().getLeadParent() instanceof com.codename1.components.SpanButton)) {
+            if (sourceComponent.getParent().getLeadParent() != null && (sourceComponent.getParent().getLeadParent() instanceof com.codename1.components.MultiButton || sourceComponent.getParent().getLeadParent() instanceof com.codename1.components.SpanButton)) {
                 sourceComponent = sourceComponent.getParent().getLeadParent();
             }
 
-            if(sourceComponent == gui_BtnBack) {
+            if (sourceComponent == gui_BtnBack) {
                 onBtnBackActionEvent(ev);
             }
-            if(sourceComponent == gui_BtnAddPost) {
+            if (sourceComponent == gui_BtnAddPost) {
                 onBtnAddPostActionEvent(ev);
             }
         }
@@ -66,52 +92,53 @@ public class PostAddForm extends com.codename1.ui.Form {
         public void dataChanged(int type, int index) {
         }
     }
+
     private void initGuiBuilderComponents(com.codename1.ui.util.Resources resourceObjectInstance) {
         guiBuilderBindComponentListeners();
         setLayout(new com.codename1.ui.layouts.LayeredLayout());
         setInlineStylesTheme(resourceObjectInstance);
         setScrollableY(false);
-                setInlineStylesTheme(resourceObjectInstance);
+        setInlineStylesTheme(resourceObjectInstance);
         setTitle("addpost");
         setName("addpost");
         gui_Container.setPreferredSizeStr("189.41798mm 12.962963mm");
-                gui_Container.setInlineStylesTheme(resourceObjectInstance);
+        gui_Container.setInlineStylesTheme(resourceObjectInstance);
         gui_Container.setName("Container");
         gui_Container_1.setPreferredSizeStr("189.41798mm 37.56614mm");
-                gui_Container_1.setInlineStylesTheme(resourceObjectInstance);
+        gui_Container_1.setInlineStylesTheme(resourceObjectInstance);
         gui_Container_1.setName("Container_1");
         gui_Container_2.setPreferredSizeStr("189.41798mm 10.31746mm");
-                gui_Container_2.setInlineStylesTheme(resourceObjectInstance);
+        gui_Container_2.setInlineStylesTheme(resourceObjectInstance);
         gui_Container_2.setName("Container_2");
         addComponent(gui_Container);
         gui_Label.setText("what's in your mind ? ");
-                gui_Label.setInlineStylesTheme(resourceObjectInstance);
+        gui_Label.setInlineStylesTheme(resourceObjectInstance);
         gui_Label.setName("Label");
-        com.codename1.ui.FontImage.setMaterialIcon(gui_Label,"\ue873".charAt(0));
+        com.codename1.ui.FontImage.setMaterialIcon(gui_Label, "\ue873".charAt(0));
         gui_Container.addComponent(gui_Label);
         addComponent(gui_Container_1);
         gui_Text_Field_Post.setPreferredSizeStr("187.30159mm 35.449738mm");
         gui_Text_Field_Post.setText("Your Postaargfrdh");
-                gui_Text_Field_Post.setInlineStylesTheme(resourceObjectInstance);
+        gui_Text_Field_Post.setInlineStylesTheme(resourceObjectInstance);
         gui_Text_Field_Post.setName("Text_Field_Post");
         gui_Container_1.addComponent(gui_Text_Field_Post);
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Text_Field_Post.getParent().getLayout()).setInsets(gui_Text_Field_Post, "0.0mm 0.0mm 0.0mm 0.0mm").setReferenceComponents(gui_Text_Field_Post, "-1 -1 -1 -1").setReferencePositions(gui_Text_Field_Post, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout) gui_Text_Field_Post.getParent().getLayout()).setInsets(gui_Text_Field_Post, "0.0mm 0.0mm 0.0mm 0.0mm").setReferenceComponents(gui_Text_Field_Post, "-1 -1 -1 -1").setReferencePositions(gui_Text_Field_Post, "0.0 0.0 0.0 0.0");
         addComponent(gui_Container_2);
         gui_BtnBack.setText("Cancel");
-                gui_BtnBack.setInlineStylesTheme(resourceObjectInstance);
+        gui_BtnBack.setInlineStylesTheme(resourceObjectInstance);
         gui_BtnBack.setName("BtnBack");
         gui_BtnAddPost.setPreferredSizeStr("inherit 9.259259mm");
         gui_BtnAddPost.setText("Save Post");
-                gui_BtnAddPost.setInlineStylesTheme(resourceObjectInstance);
+        gui_BtnAddPost.setInlineStylesTheme(resourceObjectInstance);
         gui_BtnAddPost.setName("BtnAddPost");
         gui_BtnAddPost.setDisabledIcon(com.codename1.ui.FontImage.createMaterial("\ue145".charAt(0), gui_BtnAddPost.getDisabledStyle()));
         gui_Container_2.addComponent(gui_BtnBack);
         gui_Container_2.addComponent(gui_BtnAddPost);
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Container.getParent().getLayout()).setInsets(gui_Container, "2.6455026mm auto 89.09774% 0.0mm").setReferenceComponents(gui_Container, "-1 -1 -1 -1").setReferencePositions(gui_Container, "0.0 0.0 0.0 0.0");
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_1.getLayout()).setPreferredWidthMM((float)189.41798);
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_1.getLayout()).setPreferredHeightMM((float)37.56614);
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_1.getParent().getLayout()).setInsets(gui_Container_1, "0.0mm 0.0mm auto 0.0mm").setReferenceComponents(gui_Container_1, "0 0 -1 -1").setReferencePositions(gui_Container_1, "1.0 0.0 0.0 0.0");
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_2.getParent().getLayout()).setInsets(gui_Container_2, "53.195488% 0.0mm 39.66165% 0.0mm").setReferenceComponents(gui_Container_2, "-1 -1 -1 0 ").setReferencePositions(gui_Container_2, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout) gui_Container.getParent().getLayout()).setInsets(gui_Container, "2.6455026mm auto 89.09774% 0.0mm").setReferenceComponents(gui_Container, "-1 -1 -1 -1").setReferencePositions(gui_Container, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout) gui_Container_1.getLayout()).setPreferredWidthMM((float) 189.41798);
+        ((com.codename1.ui.layouts.LayeredLayout) gui_Container_1.getLayout()).setPreferredHeightMM((float) 37.56614);
+        ((com.codename1.ui.layouts.LayeredLayout) gui_Container_1.getParent().getLayout()).setInsets(gui_Container_1, "0.0mm 0.0mm auto 0.0mm").setReferenceComponents(gui_Container_1, "0 0 -1 -1").setReferencePositions(gui_Container_1, "1.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout) gui_Container_2.getParent().getLayout()).setInsets(gui_Container_2, "53.195488% 0.0mm 39.66165% 0.0mm").setReferenceComponents(gui_Container_2, "-1 -1 -1 0 ").setReferencePositions(gui_Container_2, "0.0 0.0 0.0 0.0");
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!

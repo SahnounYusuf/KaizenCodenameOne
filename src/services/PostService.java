@@ -39,10 +39,11 @@ public class PostService {
         req.setUrl(url);
         req.setPost(true);
         req.addArgument("idp", String.valueOf(p.getIdp()));
-        req.addArgument("idu", String.valueOf(StaticVars.currentUser));
+        req.addArgument("idu", String.valueOf(p.getIdu()));
         req.addArgument("description", p.getDescription());
         req.addArgument("idl", String.valueOf(p.getIdl()));
         req.addArgument("comments", String.valueOf(p.getComment()));
+        req.addArgument("postedby", String.valueOf(p.getPostedby()));
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -52,7 +53,7 @@ public class PostService {
         NetworkManager.getInstance().addToQueueAndWait(req);
 
         return result;
-
+        
     }
 
     public int addcmt(comments c) {
