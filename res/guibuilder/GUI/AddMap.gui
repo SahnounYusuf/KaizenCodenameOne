@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" layout="LayeredLayout" layeredLayoutPreferredWidthMM="0.0" layeredLayoutPreferredHeightMM="0.0"  autolayout="true" title="AddMap" scrollableY="false" name="AddMap">
+  <component type="Button" text="Add Place" name="BtnAddPlace" actionEvent="true">
+    <layoutConstraint insets="auto 7.490637% 6.1388655mm auto" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+  </component>
+  <component type="Container" layout="LayeredLayout" layeredLayoutPreferredWidthMM="65.19898" layeredLayoutPreferredHeightMM="110.49958"  preferredSize="111.34631mm 110.49958mm" name="Container_2">
+    <layoutConstraint insets="0px 0px 1.6934801mm 0.0mm" referenceComponents="-1 -1 0 -1" referencePositions="0.0 0.0 1.0 0.0" />
+    <component type="Container" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="1" flowLayoutValign="0"  preferredSize="109.441154mm 153.25995mm" name="map">
+      <layoutConstraint insets="0px 0.0mm 0.0mm 0px" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+    </component>
+  </component>
+  <component type="Container" layout="LayeredLayout" layeredLayoutPreferredWidthMM="65.41067" layeredLayoutPreferredHeightMM="113.25148"  preferredSize="65.41067mm 113.25148mm" name="Container">
+    <layoutConstraint insets="0.0mm 0.0mm 0.0mm 1.058425mm" referenceComponents="-1 -1 0 1 " referencePositions="0.0 0.0 1.0 0.0" />
+    <component type="ImageViewer" preferredSize="6.1388655mm 10.795936mm" name="Image_Viewer">
+    <custom name="imageList" type="com.codename1.ui.Image" array="true" dimensions="1">
+      <str>fontImage:e55e</str>
+    </custom>
+      <layoutConstraint insets="auto 45.33762% 46.16823% 44.051445%" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+    </component>
+  </component>
+</component>

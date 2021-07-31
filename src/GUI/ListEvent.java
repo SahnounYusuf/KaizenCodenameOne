@@ -19,8 +19,10 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 import entities.Event;
+import entities.Participant;
 import entities.User;
 import services.ServiceEvent;
+import services.ServiceParticipant;
 import services.UserService;
 import utils.StaticVars;
 
@@ -58,6 +60,9 @@ public class ListEvent extends SideMenuBaseForm  {
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
         menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        this.getToolbar().addMaterialCommandToRightBar("Add Event", FontImage.MATERIAL_ADD,3, ev->
+                new AddEvent().show());
+        
 
         Button settingsButton = new Button("");
         settingsButton.setUIID("Title");
@@ -93,7 +98,47 @@ public class ListEvent extends SideMenuBaseForm  {
                     detevt.gui_date.setText(e.getDate());
                     detevt.gui_heure.setText(e.getHeure());
                     detevt.gui_place.setText(e.getPlace());
+                    System.out.println(e.getIdu());
                     detevt.evt = e;
+                    
+                    
+                     User u = StaticVars.getCurrentUser();
+        System.out.println(u.getId()+" "+e.getIdu());
+        if(u.getId()==e.getIdu()){
+           detevt.gui_BtnUpdateEvent.setEnabled(true);
+           detevt.gui_BtnDeleteEvent.setEnabled(true);
+           detevt.gui_BtnParticipate.setEnabled(false);
+        }else{
+           detevt.gui_BtnUpdateEvent.setEnabled(false);
+           detevt.gui_BtnDeleteEvent.setEnabled(false);
+           detevt.gui_BtnParticipate.setEnabled(true);
+            
+        }
+                    
+               System.out.println("hello"+e.getId());   
+        for (Participant p : new ServiceParticipant().selectParticipant(e.getId())){
+            User usr = new User();
+            usr=new ServiceParticipant().getInfoParticipant(p.getIdu());
+            System.out.println(usr.getNom());
+            Label lb =new Label(usr.getNom()+" "+usr.getPrenom());
+            
+            detevt.gui_Container_Participants.add(lb);
+            
+        }
+        
+        
+                    System.out.println((new ServiceParticipant().verifyParticipant(e.getId(),u.getId())).isEmpty());
+            if( (new ServiceParticipant().verifyParticipant(e.getId(),u.getId())).isEmpty()){
+                detevt.gui_BtnParticipate.setText("participate");
+            }else{
+                detevt.gui_BtnParticipate.setText("Quit Event");
+            }
+                
+            
+            
+       
+        
+                    
                     detevt.show();
                 }
             });
@@ -107,9 +152,11 @@ public class ListEvent extends SideMenuBaseForm  {
 //        }
     }
 
-//////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
     protected com.codename1.ui.Container gui_Container = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
+    protected com.codename1.ui.Container gui_Container_1 = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.X_AXIS));
     protected com.codename1.ui.Button gui_BtnAddEvent = new com.codename1.ui.Button();
+
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void guiBuilderBindComponentListeners() {
@@ -118,9 +165,7 @@ public class ListEvent extends SideMenuBaseForm  {
     }
 
     class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {
-
         private com.codename1.ui.Component cmp;
-
         public EventCallbackClass(com.codename1.ui.Component cmp) {
             this.cmp = cmp;
         }
@@ -131,11 +176,11 @@ public class ListEvent extends SideMenuBaseForm  {
         public void actionPerformed(com.codename1.ui.events.ActionEvent ev) {
             com.codename1.ui.Component sourceComponent = ev.getComponent();
 
-            if (sourceComponent.getParent().getLeadParent() != null && (sourceComponent.getParent().getLeadParent() instanceof com.codename1.components.MultiButton || sourceComponent.getParent().getLeadParent() instanceof com.codename1.components.SpanButton)) {
+            if(sourceComponent.getParent().getLeadParent() != null && (sourceComponent.getParent().getLeadParent() instanceof com.codename1.components.MultiButton || sourceComponent.getParent().getLeadParent() instanceof com.codename1.components.SpanButton)) {
                 sourceComponent = sourceComponent.getParent().getLeadParent();
             }
 
-            if (sourceComponent == gui_BtnAddEvent) {
+            if(sourceComponent == gui_BtnAddEvent) {
                 onBtnAddEventActionEvent(ev);
             }
         }
@@ -143,26 +188,30 @@ public class ListEvent extends SideMenuBaseForm  {
         public void dataChanged(int type, int index) {
         }
     }
-
     private void initGuiBuilderComponents(com.codename1.ui.util.Resources resourceObjectInstance) {
         guiBuilderBindComponentListeners();
         setLayout(new com.codename1.ui.layouts.LayeredLayout());
         setInlineStylesTheme(resourceObjectInstance);
-        setScrollableY(true);
-        setInlineStylesTheme(resourceObjectInstance);
+        setScrollableY(false);
+                setInlineStylesTheme(resourceObjectInstance);
         setTitle("ListEvent");
         setName("ListEvent");
-        gui_Container.setPreferredSizeStr("85.520744mm 109.864525mm");
-        gui_Container.setScrollableY(true);
-        gui_Container.setInlineStylesTheme(resourceObjectInstance);
+        gui_Container.setPreferredSizeStr("215.07198mm 136.53683mm");
+        gui_Container.setScrollableY(false);
+                gui_Container.setInlineStylesTheme(resourceObjectInstance);
         gui_Container.setName("Container");
-        gui_BtnAddEvent.setText("Add Event");
-        gui_BtnAddEvent.setInlineStylesTheme(resourceObjectInstance);
-        gui_BtnAddEvent.setName("BtnAddEvent");
+        gui_Container_1.setPreferredSizeStr("215.07198mm 11.642675mm");
+                gui_Container_1.setInlineStylesTheme(resourceObjectInstance);
+        gui_Container_1.setName("Container_1");
         addComponent(gui_Container);
-        addComponent(gui_BtnAddEvent);
-        ((com.codename1.ui.layouts.LayeredLayout) gui_Container.getParent().getLayout()).setInsets(gui_Container, "4.657071mm 9.593952% 9.983364% 5.927185mm").setReferenceComponents(gui_Container, "-1 -1 -1 -1").setReferencePositions(gui_Container, "0.0 0.0 0.0 0.0");
-        ((com.codename1.ui.layouts.LayeredLayout) gui_BtnAddEvent.getParent().getLayout()).setInsets(gui_BtnAddEvent, "auto 15.72327% 4.0220156mm auto").setReferenceComponents(gui_BtnAddEvent, "-1 -1 -1 -1").setReferencePositions(gui_BtnAddEvent, "0.0 0.0 0.0 0.0");
+        addComponent(gui_Container_1);
+        gui_BtnAddEvent.setText("Add Event");
+                gui_BtnAddEvent.setInlineStylesTheme(resourceObjectInstance);
+        gui_BtnAddEvent.setName("BtnAddEvent");
+        com.codename1.ui.FontImage.setMaterialIcon(gui_BtnAddEvent,"\ue145".charAt(0));
+        gui_Container_1.addComponent(gui_BtnAddEvent);
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Container.getParent().getLayout()).setInsets(gui_Container, "0.0mm auto auto 0.0mm").setReferenceComponents(gui_Container, "-1 -1 -1 -1").setReferencePositions(gui_Container, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_1.getParent().getLayout()).setInsets(gui_Container_1, "82.73736% 0.0mm 17.146486mm 0.0mm").setReferenceComponents(gui_Container_1, "-1 -1 -1 -1").setReferencePositions(gui_Container_1, "0.0 0.0 0.0 0.0");
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!

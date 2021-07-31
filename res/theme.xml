@@ -2,6 +2,7 @@
 
 <resource majorVersion="1" minorVersion="11" useXmlUI="false">
     <image name="BackgroundRect.png" type="multi"  />
+    <image name="blue_pin.png"  />
     <image name="duke.png" type="multi"  />
     <image name="facebook.png"  />
     <image name="gradient-overlay.png"  />

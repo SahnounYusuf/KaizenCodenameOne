@@ -28,8 +28,8 @@ public class PostService {
 
     int result = 0;
     ArrayList<post> post;
-     ArrayList<comments> comment;
-    
+    ArrayList<comments> comment;
+
     ArrayList<String> description;
     boolean flag = false;
 
@@ -52,8 +52,9 @@ public class PostService {
         NetworkManager.getInstance().addToQueueAndWait(req);
 
         return result;
-        
-    } 
+
+    }
+
     public int addcmt(comments c) {
         String url = StaticVars.baseURL + "/addcmt";
         ConnectionRequest req = new ConnectionRequest();
@@ -72,8 +73,9 @@ public class PostService {
         NetworkManager.getInstance().addToQueueAndWait(req);
 
         return result;
-        
-    } 
+
+    }
+
     public ArrayList<post> getpost() {
         String url = StaticVars.baseURL + "/getpost";
         ConnectionRequest req = new ConnectionRequest();
@@ -85,14 +87,14 @@ public class PostService {
             public void actionPerformed(NetworkEvent evt) {
                 post = parsepost(new String(req.getResponseData()));
             }
-       });
+        });
 
         NetworkManager.getInstance().addToQueueAndWait(req);
         System.out.println(post);
         return post;
     }
-    
-                public ArrayList<post> parsepost(String jsonText) {
+
+    public ArrayList<post> parsepost(String jsonText) {
         try {
             post = new ArrayList<>();
             JSONParser j = new JSONParser();
@@ -104,16 +106,18 @@ public class PostService {
                 post p = new post();
                 p.setDescription(objet.get("description").toString());
                 p.setPostedby(objet.get("postedby").toString());
-                float comments = Float.parseFloat(objet.get("comments").toString());
-                p.setComments((int) comments);
+//                if (objet.get("comments").toString().equals(null)) {
+//                    p.setComments(0);
+//                } else {
+//                    float comments = Float.parseFloat(objet.get("comments").toString());
+//                    p.setComments((int) comments);
+//                }
 
                 float idl = Float.parseFloat(objet.get("idl").toString());
                 p.setIdl((int) idl);
-                
+
                 float idp = Float.parseFloat(objet.get("idp").toString());
                 p.setIdp((int) idp);
-
-              
 
                 post.add(p);
             }
@@ -121,13 +125,14 @@ public class PostService {
         }
         return (post);
     }
- public int deletepost(int idp) {
+
+    public int deletepost(int idp) {
         String url = StaticVars.baseURL + "/deletepost";
         ConnectionRequest req = new ConnectionRequest();
         req.setUrl(url);
         req.setPost(false);
         req.addArgument("idp", String.valueOf(idp));
-        req.addArgument("idu", String.valueOf(StaticVars.currentUser.getId()));      
+        req.addArgument("idu", String.valueOf(StaticVars.currentUser.getId()));
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -138,7 +143,8 @@ public class PostService {
 
         return result;
     }
- public ArrayList<comments> getcomment(int idp) {
+
+    public ArrayList<comments> getcomment(int idp) {
         String url = StaticVars.baseURL + "/getcomment";
         ConnectionRequest req = new ConnectionRequest();
         req.setUrl(url);
@@ -149,14 +155,14 @@ public class PostService {
             public void actionPerformed(NetworkEvent evt) {
                 comment = parsecomment(new String(req.getResponseData()));
             }
-       });
+        });
 
         NetworkManager.getInstance().addToQueueAndWait(req);
         System.out.println(comment);
         return comment;
     }
-    
-                public ArrayList<comments> parsecomment(String jsonText) {
+
+    public ArrayList<comments> parsecomment(String jsonText) {
         try {
             comment = new ArrayList<>();
             JSONParser j = new JSONParser();
@@ -167,7 +173,7 @@ public class PostService {
             for (Map<String, Object> objet : list) {
                 comments ca = new comments();
                 ca.setComment(objet.get("comment").toString());
-                
+
                 float idc = Float.parseFloat(objet.get("idc").toString());
                 ca.setIdc((int) idc);
                 float idu = Float.parseFloat(objet.get("idu").toString());

@@ -10,8 +10,12 @@ import com.codename1.ui.Command;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.validation.LengthConstraint;
+import com.codename1.ui.validation.Validator;
 import entities.Event;
+import entities.User;
 import services.ServiceEvent;
+import utils.StaticVars;
 
 /**
  * GUI builder created Form
@@ -26,9 +30,12 @@ public class AddEvent extends com.codename1.ui.Form {
     
     public AddEvent(com.codename1.ui.util.Resources resourceObjectInstance) {
         initGuiBuilderComponents(resourceObjectInstance);
+        Validator val = new Validator();
+        val.addConstraint(gui_event_name, new LengthConstraint(3,"Error"));
+        val.addSubmitButtons(gui_btnAjouter);
     }
 
-////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
     protected com.codename1.ui.Label gui_Label = new com.codename1.ui.Label();
     protected com.codename1.ui.Label gui_Label_1 = new com.codename1.ui.Label();
     protected com.codename1.ui.Label gui_Label_2 = new com.codename1.ui.Label();
@@ -36,18 +43,19 @@ public class AddEvent extends com.codename1.ui.Form {
     protected com.codename1.ui.TextField gui_event_name = new com.codename1.ui.TextField();
     protected com.codename1.ui.spinner.Picker gui_date = new com.codename1.ui.spinner.Picker();
     protected com.codename1.ui.spinner.Picker gui_heure = new com.codename1.ui.spinner.Picker();
-    protected com.codename1.ui.Button gui_btnAjouter = new com.codename1.ui.Button();
-    protected com.codename1.ui.Button gui_btnCancel = new com.codename1.ui.Button();
     protected com.codename1.ui.TextField gui_place = new com.codename1.ui.TextField();
     protected com.codename1.ui.Button gui_Button = new com.codename1.ui.Button();
+    protected com.codename1.ui.Container gui_ContainerBTN = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.X_AXIS));
+    protected com.codename1.ui.Button gui_btnAjouter = new com.codename1.ui.Button();
+    protected com.codename1.ui.Button gui_btnCancel = new com.codename1.ui.Button();
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void guiBuilderBindComponentListeners() {
         EventCallbackClass callback = new EventCallbackClass();
+        gui_Button.addActionListener(callback);
         gui_btnAjouter.addActionListener(callback);
         gui_btnCancel.addActionListener(callback);
-        gui_Button.addActionListener(callback);
     }
 
     class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {
@@ -66,14 +74,14 @@ public class AddEvent extends com.codename1.ui.Form {
                 sourceComponent = sourceComponent.getParent().getLeadParent();
             }
 
+            if(sourceComponent == gui_Button) {
+                onButtonActionEvent(ev);
+            }
             if(sourceComponent == gui_btnAjouter) {
                 onbtnAjouterActionEvent(ev);
             }
             if(sourceComponent == gui_btnCancel) {
                 onbtnCancelActionEvent(ev);
-            }
-            if(sourceComponent == gui_Button) {
-                onButtonActionEvent(ev);
             }
         }
 
@@ -89,7 +97,7 @@ public class AddEvent extends com.codename1.ui.Form {
         setInlineAllStyles("alignment:center;");
         setTitle("Add Event");
         setName("AddEvent");
-        gui_Label.setPreferredSizeStr("34.92803mm inherit");
+        gui_Label.setPreferredSizeStr("11.430991mm inherit");
         gui_Label.setText("Event Name");
                 gui_Label.setInlineStylesTheme(resourceObjectInstance);
         gui_Label.setInlineAllStyles("fgColor:70101;");
@@ -110,32 +118,23 @@ public class AddEvent extends com.codename1.ui.Form {
         gui_Label_3.setInlineAllStyles("fgColor:70101;");
         gui_Label_3.setName("Label_3");
                 gui_event_name.setInlineStylesTheme(resourceObjectInstance);
-        gui_event_name.setInlineAllStyles("border:1.0px solid 0;");
+        gui_event_name.setInlineAllStyles("border:none; bgColor:98f6f5; fgColor:90001; transparency:188;");
         gui_event_name.setName("event_name");
         gui_date.setPreferredSizeStr("57.154953mm inherit");
-        gui_date.setText("...");
+        gui_date.setText("28/07/21");
                 gui_date.setInlineStylesTheme(resourceObjectInstance);
+        gui_date.setInlineAllStyles("bgColor:98f6f5; fgColor:30200; transparency:188;");
         gui_date.setName("date");
         gui_date.setType(1);
         gui_heure.setPreferredSizeStr("57.154953mm inherit");
         gui_heure.setText("00:00");
                 gui_heure.setInlineStylesTheme(resourceObjectInstance);
+        gui_heure.setInlineAllStyles("bgColor:98f6f5; fgColor:10103; transparency:188;");
         gui_heure.setName("heure");
         gui_heure.setType(2);
-        gui_btnAjouter.setPreferredSizeStr("26.037256mm 11.007621mm");
-        gui_btnAjouter.setText("Add Event");
-                gui_btnAjouter.setInlineStylesTheme(resourceObjectInstance);
-        gui_btnAjouter.setInlineAllStyles("alignment:left;");
-        gui_btnAjouter.setName("btnAjouter");
-        com.codename1.ui.FontImage.setMaterialIcon(gui_btnAjouter,"\ue145".charAt(0));
-        gui_btnCancel.setPreferredSizeStr("19.686707mm 11.007621mm");
-        gui_btnCancel.setText("Cancel");
-                gui_btnCancel.setInlineStylesTheme(resourceObjectInstance);
-        gui_btnCancel.setInlineAllStyles("alignment:right;");
-        gui_btnCancel.setName("btnCancel");
-        com.codename1.ui.FontImage.setMaterialIcon(gui_btnCancel,"\ue5c9".charAt(0));
+        gui_place.setEditable(false);
                 gui_place.setInlineStylesTheme(resourceObjectInstance);
-        gui_place.setInlineAllStyles("border:1.0px solid 0;");
+        gui_place.setInlineAllStyles("border:none; bgColor:98f6f5; fgColor:10100; transparency:188;");
         gui_place.setName("place");
         gui_Button.setText("Map");
                 gui_Button.setInlineStylesTheme(resourceObjectInstance);
@@ -144,6 +143,10 @@ public class AddEvent extends com.codename1.ui.Form {
         gui_Button.setInlinePressedStyles("bgColor:f19ec; fgColor:e63900; transparency:64;");
         gui_Button.setName("Button");
         com.codename1.ui.FontImage.setMaterialIcon(gui_Button,"\ue55b".charAt(0));
+        gui_ContainerBTN.setPreferredSizeStr("84.25063mm 20.321762mm");
+                gui_ContainerBTN.setInlineStylesTheme(resourceObjectInstance);
+        gui_ContainerBTN.setInlineAllStyles("alignment:center; margin:inherit inherit inherit 20px; padding:20px 20px 20px 20px;");
+        gui_ContainerBTN.setName("ContainerBTN");
         addComponent(gui_Label);
         addComponent(gui_Label_1);
         addComponent(gui_Label_2);
@@ -151,28 +154,42 @@ public class AddEvent extends com.codename1.ui.Form {
         addComponent(gui_event_name);
         addComponent(gui_date);
         addComponent(gui_heure);
-        addComponent(gui_btnAjouter);
-        addComponent(gui_btnCancel);
         addComponent(gui_place);
         addComponent(gui_Button);
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Label.getParent().getLayout()).setInsets(gui_Label, "0.0mm 9.314138mm 0.0mm 0.0mm").setReferenceComponents(gui_Label, "4 4 4 -1").setReferencePositions(gui_Label, "0.0 1.0 0.0 0.0");
+        addComponent(gui_ContainerBTN);
+        gui_btnAjouter.setPreferredSizeStr("25.613886mm 11.007621mm");
+        gui_btnAjouter.setText("Add Event");
+                gui_btnAjouter.setInlineStylesTheme(resourceObjectInstance);
+        gui_btnAjouter.setInlineAllStyles("alignment:left;");
+        gui_btnAjouter.setName("btnAjouter");
+        com.codename1.ui.FontImage.setMaterialIcon(gui_btnAjouter,"\ue145".charAt(0));
+        gui_btnCancel.setPreferredSizeStr("19.686707mm 11.007621mm");
+        gui_btnCancel.setText("Cancel");
+                gui_btnCancel.setInlineStylesTheme(resourceObjectInstance);
+        gui_btnCancel.setInlineAllStyles("bgType:none; alignment:right; margin:inherit 20px inherit inherit;");
+        gui_btnCancel.setName("btnCancel");
+        com.codename1.ui.FontImage.setMaterialIcon(gui_btnCancel,"\ue5c9".charAt(0));
+        gui_ContainerBTN.addComponent(gui_btnAjouter);
+        gui_ContainerBTN.addComponent(gui_btnCancel);
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Label.getParent().getLayout()).setInsets(gui_Label, "0.0mm -1.270112mm 0.0mm 0.0mm").setReferenceComponents(gui_Label, "4 4 4 -1").setReferencePositions(gui_Label, "0.0 1.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Label_1.getParent().getLayout()).setInsets(gui_Label_1, "17.470882% auto auto 0.0mm").setReferenceComponents(gui_Label_1, "-1 -1 -1 0 ").setReferencePositions(gui_Label_1, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Label_2.getParent().getLayout()).setInsets(gui_Label_2, "28.112217% auto auto 0.0mm").setReferenceComponents(gui_Label_2, "-1 -1 -1 0 ").setReferencePositions(gui_Label_2, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Label_3.getParent().getLayout()).setInsets(gui_Label_3, "37.588825% 1.0584259mm auto 0.0mm").setReferenceComponents(gui_Label_3, "-1 4 -1 0 ").setReferencePositions(gui_Label_3, "0.0 1.0 0.0 0.0");
-        ((com.codename1.ui.layouts.LayeredLayout)gui_event_name.getParent().getLayout()).setInsets(gui_event_name, "8.63132% auto auto 13.208465%").setReferenceComponents(gui_event_name, "-1 -1 -1 -1").setReferencePositions(gui_event_name, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_event_name.getParent().getLayout()).setInsets(gui_event_name, "8.379175% auto auto 14.370079%").setReferenceComponents(gui_event_name, "-1 -1 -1 -1").setReferencePositions(gui_event_name, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_date.getParent().getLayout()).setInsets(gui_date, "17.138103% 0.0mm auto 0.0mm").setReferenceComponents(gui_date, "-1 4 -1 4 ").setReferencePositions(gui_date, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_heure.getParent().getLayout()).setInsets(gui_heure, "28.45258% 0.0mm auto 0.0mm").setReferenceComponents(gui_heure, "-1 4 -1 4 ").setReferencePositions(gui_heure, "0.0 0.0 0.0 0.0");
-        ((com.codename1.ui.layouts.LayeredLayout)gui_btnAjouter.getParent().getLayout()).setInsets(gui_btnAjouter, "auto 0.0mm 13.893717% 1.6934801mm").setReferenceComponents(gui_btnAjouter, "-1 4 -1 0 ").setReferencePositions(gui_btnAjouter, "0.0 1.0 0.0 0.0");
-        ((com.codename1.ui.layouts.LayeredLayout)gui_btnCancel.getParent().getLayout()).setInsets(gui_btnCancel, "0.0mm 1.4817944mm auto 0.0mm").setReferenceComponents(gui_btnCancel, "7 4 7 10 ").setReferencePositions(gui_btnCancel, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_place.getParent().getLayout()).setInsets(gui_place, "0.0mm auto 0.0mm 0.0mm").setReferenceComponents(gui_place, "3 -1 3 5 ").setReferencePositions(gui_place, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Button.getParent().getLayout()).setInsets(gui_Button, "46.03999% 5.5038104mm auto auto").setReferenceComponents(gui_Button, "-1 4 -1 -1").setReferencePositions(gui_Button, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_ContainerBTN.getParent().getLayout()).setInsets(gui_ContainerBTN, "72.44389% -7.4505806E-8mm 15.80497% 0.0mm").setReferenceComponents(gui_ContainerBTN, "-1 -1 -1 -1").setReferencePositions(gui_ContainerBTN, "0.0 0.0 0.0 0.0");
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
     
     
     public void onbtnAjouterActionEvent(com.codename1.ui.events.ActionEvent ev) {
-        Event p = new Event(gui_event_name.getText(), gui_date.getText(), gui_heure.getText(), gui_place.getText());
+        User u = StaticVars.getCurrentUser();
+        
+        Event p = new Event(u.getId(),gui_event_name.getText(), gui_date.getText(), gui_heure.getText(), gui_place.getText());
                     ServiceEvent sp = new ServiceEvent();
                     if (sp.addEvent(p) == 200) {
 
