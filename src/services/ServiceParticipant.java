@@ -116,6 +116,25 @@ public class ServiceParticipant {
     }
     
     
+    public int deleteEventParticipant(int ide) {
+        String url = StaticVars.baseURL + "/deleteEventParticipant";
+        ConnectionRequest req = new ConnectionRequest();
+        req.setUrl(url);
+        req.setPost(true);
+        req.addArgument( "ide", String.valueOf(ide));
+              
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                result = req.getResponseCode();
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+        return result;
+    }
+    
+    
     public User getInfoParticipant(int id) {
         String url = StaticVars.baseURL + "/getParticipant";
         ConnectionRequest req = new ConnectionRequest();

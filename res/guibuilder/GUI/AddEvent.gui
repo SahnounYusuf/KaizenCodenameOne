@@ -26,13 +26,16 @@
     <layoutConstraint insets="0.0mm auto 0.0mm 0.0mm" referenceComponents="3 -1 3 5 " referencePositions="0.0 0.0 0.0 0.0" />
   </component>
   <component type="Button" text="Map" selectedStyles="bgColor:1b923; fgColor:fef504;" unselectedStyles="bgColor:7e202; fgColor:ded901; transparency:64;" pressedStyles="bgColor:f19ec; fgColor:e63900; transparency:64;" icon="fontImage:e55b" name="Button" actionEvent="true">
-    <layoutConstraint insets="46.03999% 5.5038104mm auto auto" referenceComponents="-1 4 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+    <layoutConstraint insets="auto 4.2337mm 39.70407% auto" referenceComponents="-1 4 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
   </component>
   <component type="Container" layout="BoxLayout" boxLayoutAxis="X"  styles="alignment:center; margin:inherit inherit inherit 20px; padding:20px 20px 20px 20px;" preferredSize="84.25063mm 20.321762mm" name="ContainerBTN">
     <layoutConstraint insets="72.44389% -7.4505806E-8mm 15.80497% 0.0mm" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
-    <component type="Button" text="Add Event" styles="alignment:left;" preferredSize="25.613886mm 11.007621mm" icon="fontImage:e145" name="btnAjouter" actionEvent="true">
+    <component type="Button" text="Add Event" preferredSize="25.613886mm 13.124471mm" icon="fontImage:e145" name="btnAjouter" actionEvent="true">
     </component>
-    <component type="Button" text="Cancel" styles="bgType:none; alignment:right; margin:inherit 20px inherit inherit;" preferredSize="19.686707mm 11.007621mm" icon="fontImage:e5c9" name="btnCancel" actionEvent="true">
+    <component type="Button" text="Cancel" styles="bgType:none; alignment:right; margin:inherit 30px inherit inherit;" preferredSize="19.686707mm 13.124471mm" icon="fontImage:e5c9" name="btnCancel" actionEvent="true">
     </component>
+  </component>
+  <component type="TextArea" text="" preferredSize="50.8044mm 24.978832mm" enabled="false" editable="false" rows="2" columns="8" name="Textgeorev">
+    <layoutConstraint insets="0.0mm -2.1168501mm 4.2337008mm 0.0mm" referenceComponents="3 4 8 4 " referencePositions="0.0 0.0 1.0 0.0" />
   </component>
 </component>

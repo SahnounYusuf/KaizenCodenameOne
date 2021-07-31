@@ -81,10 +81,10 @@ public class PieceAddForm extends SideMenuBaseForm {
         TextField tfDescription = new TextField();
         TextField tfPrix = new TextField();
         tfIdu.setHint("Idu");
-        tfNom.setHint("Nom");
+        tfNom.setHint("Name");
         tfType.setHint("Type");
         tfDescription.setHint("Description");
-        tfPrix.setHint("Prix");
+        tfPrix.setHint("Price");
         
         tfIdu.setUIID("VeloTextField");
         tfNom.setUIID("VeloTextField");
@@ -92,15 +92,15 @@ public class PieceAddForm extends SideMenuBaseForm {
         tfDescription.setUIID("VeloTextField");
         tfPrix.setUIID("VeloTextField");
 
-        Button btnValider = new Button("Valider");
+        Button btnValider = new Button("Add piece");
 
         btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 if (tfNom.getText().length() < 3) {
-                    Dialog.show("ERROR", "NOM DOIT AVOIR AU MOINS 3 CARACTÈRES", "OK", null);
+                    Dialog.show("ERROR", "Name must be formed with 3 characters at least", "OK", null);
                 } else if (tfType.getText().length() < 2) {
-                    Dialog.show("ERROR", "PRÉNOM DOIT AVOIR AU MOINS 5 CARACTÈRES", "OK", null);
+                    Dialog.show("ERROR", "Type must be formed with 2 characters at least", "OK", null);
                 } else {
 
                     Piece v = new Piece();
@@ -111,14 +111,14 @@ public class PieceAddForm extends SideMenuBaseForm {
                     v.setPrix(tfPrix.getText());
                     ServicePiece sp = new ServicePiece();
                     if (sp.addPiece(v) == 200) {
-                        Dialog.show("SUCCESS", "Piece ajoutée avec succès", "OK", null);
+                        Dialog.show("SUCCESS", "Piece modified", "OK", null);
                     } else {
-                        Dialog.show("ERROR", "ERREUR SERVEUR", "OK", null);
+                        Dialog.show("ERROR", "SERVER ERROR", "OK", null);
                     }
                 }
             }
         });
-        Button btnAfficher = new Button("Afficher");
+        Button btnAfficher = new Button("Show pieces");
 
         btnAfficher.addActionListener(new ActionListener() {
             @Override

@@ -15,6 +15,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 import entities.User;
+import entities.UserState;
 import java.util.ArrayList;
 import services.UserService;
 import utils.StaticVars;
@@ -25,8 +26,12 @@ import utils.StaticVars;
  */
 public class LoginF extends Form {
 
+    User loggedUser = new User();
+    UserState userState = new UserState();
+
     public LoginF(Resources theme) {
         super(new BorderLayout(BorderLayout.CENTER_BEHAVIOR_CENTER_ABSOLUTE));
+
         setUIID("LoginForm");
         Container welcome = FlowLayout.encloseCenter(
                 new Label("Welcome ", "WelcomeWhite"),
@@ -60,10 +65,28 @@ public class LoginF extends Form {
         loginButton.addActionListener(e -> {
             UserService us = new UserService();
             ArrayList<User> u = us.verifyUser(login.getText(), password.getText());
+            System.out.println(u);
+
+            for (User user : u) {
+                loggedUser = user;
+            }
+            System.out.println(loggedUser);
+
+            ArrayList<UserState> listState = us.retriveUserState(String.valueOf(loggedUser.getId()));
+
+            for (UserState userS : listState) {
+                userState = userS;
+            }
+            System.out.println(userState);
 
             if (!u.isEmpty()) {
-                if (us.retriveUserState(String.valueOf(u.get(0).getId())).get(0).getBlock().equals("Yes")) {
-                    Dialog.show("ERROR", "Your account is banned, Contact admin for more info.", "OK", null);
+                if (!listState.isEmpty()) {
+                    if (userState.getBlock().equals("Yes")) {
+                        Dialog.show("ERROR", "Your account is banned, Contact admin for more info.", "OK", null);
+                    } else {
+                        StaticVars.setCurrentUser(u.get(0));
+                        new PostListForm(theme).show();
+                    }
                 } else {
                     StaticVars.setCurrentUser(u.get(0));
                     new PostListForm(theme).show();
@@ -73,7 +96,7 @@ public class LoginF extends Form {
             }
         });
 
-        Button createNewAccount = new Button("CREATE NEW ACCOUNT");
+        Button createNewAccount = new Button("Create new account");
 
         createNewAccount.setUIID("CreateNewAccountButton");
         createNewAccount.addActionListener(e -> {

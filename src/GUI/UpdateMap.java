@@ -7,8 +7,11 @@ package GUI;
 
 
 import com.codename1.maps.MapComponent;
+import com.codename1.util.StringUtil;
 
 import entities.Event;
+import java.util.List;
+import services.ServiceEvent;
 
 
 
@@ -30,7 +33,7 @@ public class UpdateMap extends com.codename1.ui.Form {
         initGuiBuilderComponents(resourceObjectInstance);
     }
 
-//////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////-- DON'T EDIT BELOW THIS LINE!!!
     protected com.codename1.ui.Button gui_BtnUpdatePlace = new com.codename1.ui.Button();
     protected com.codename1.ui.Container gui_Container_2 = new com.codename1.ui.Container(new com.codename1.ui.layouts.LayeredLayout());
     protected com.codename1.ui.Container gui_map = new com.codename1.ui.Container(new com.codename1.ui.layouts.FlowLayout());
@@ -118,6 +121,10 @@ public class UpdateMap extends com.codename1.ui.Form {
         upevent.gui_date.setText(upevt.gui_date.getText());
         upevent.gui_heure.setText(upevt.gui_heure.getText());
         upevent.evtupdate=updatemapevent;
+        upevent.gui_place.setHidden(true);
+        List<String> st =StringUtil.tokenize(mc.getCenter().getLatitude()+","+mc.getCenter().getLongitude(),",");
+        upevent.gui_Textgeorev.setText(new ServiceEvent().getAdress(st.get(0),st.get(1)));
+             
         upevent.showBack();
         
     }

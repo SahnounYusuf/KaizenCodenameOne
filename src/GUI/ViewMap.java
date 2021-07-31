@@ -10,13 +10,17 @@ import com.codename1.maps.MapComponent;
 import com.codename1.maps.layers.PointLayer;
 import com.codename1.maps.layers.PointsLayer;
 import com.codename1.ui.Image;
+import com.codename1.ui.Label;
 import com.codename1.util.StringUtil;
 import entities.Event;
+import entities.Participant;
 import entities.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import services.ServiceEvent;
+import services.ServiceParticipant;
 import utils.StaticVars;
 
 
@@ -42,7 +46,7 @@ public class ViewMap extends com.codename1.ui.Form {
     }
     
     
-////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
     protected com.codename1.ui.Button gui_BtnReturn = new com.codename1.ui.Button();
     protected com.codename1.ui.Container gui_Container_2 = new com.codename1.ui.Container(new com.codename1.ui.layouts.LayeredLayout());
     protected com.codename1.ui.Container gui_map = new com.codename1.ui.Container(new com.codename1.ui.layouts.FlowLayout());
@@ -115,20 +119,32 @@ public class ViewMap extends com.codename1.ui.Form {
         devent.gui_place.setText(de.gui_place.getText());
         devent.evt=ee;
         
+        List<String> st =StringUtil.tokenize(ee.getPlace(),",");
+        devent.gui_Textgeorev.setText(new ServiceEvent().getAdress(st.get(0),st.get(1)));
+                    
+        
         User u = StaticVars.getCurrentUser();
         System.out.println(u.getId()+" "+ee.getIdu());
         if(u.getId()== ee.getIdu()){
            devent.gui_BtnUpdateEvent.setEnabled(true);
            devent.gui_BtnDeleteEvent.setEnabled(true);
-           devent.gui_BtnParticipate.setEnabled(false);
+           
         }else{
            devent.gui_BtnUpdateEvent.setEnabled(false);
            devent.gui_BtnDeleteEvent.setEnabled(false);
-           devent.gui_BtnParticipate.setEnabled(true);
+          
             
         }
         
-        
+        for (Participant pp : new ServiceParticipant().selectParticipant(ee.getId())) {
+                    User usr = new User();
+                    usr = new ServiceParticipant().getInfoParticipant(pp.getIdu());
+                    System.out.println(usr.getNom());
+                    Label lb = new Label(usr.getNom() + " " + usr.getPrenom());
+
+                    devent.gui_Container_Participants.add(lb);
+
+                }
         
         devent.show();
     }

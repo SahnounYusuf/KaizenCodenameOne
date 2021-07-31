@@ -12,6 +12,7 @@ import com.codename1.ui.Dialog;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.util.StringUtil;
+import com.google.common.util.concurrent.Service;
 import entities.Event;
 import entities.Participant;
 import entities.User;
@@ -39,16 +40,17 @@ public class DetailsEvent extends com.codename1.ui.Form {
 
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
     protected com.codename1.ui.Container gui_ContainerBTN = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.X_AXIS));
     protected com.codename1.ui.Button gui_BtnUpdateEvent = new com.codename1.ui.Button();
     protected com.codename1.ui.Button gui_BtnDeleteEvent = new com.codename1.ui.Button();
     protected com.codename1.ui.Button gui_BtnParticipate = new com.codename1.ui.Button();
-    protected com.codename1.ui.Container gui_Container = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
+    protected com.codename1.ui.Container gui_Container = new com.codename1.ui.Container(new com.codename1.ui.layouts.LayeredLayout());
     protected com.codename1.ui.Label gui_event_name = new com.codename1.ui.Label();
     protected com.codename1.ui.Label gui_date = new com.codename1.ui.Label();
     protected com.codename1.ui.Label gui_heure = new com.codename1.ui.Label();
     protected com.codename1.ui.Label gui_place = new com.codename1.ui.Label();
+    protected com.codename1.ui.TextArea gui_Textgeorev = new com.codename1.ui.TextArea();
     protected com.codename1.ui.Container gui_Container_1 = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
     protected com.codename1.ui.Label gui_Label = new com.codename1.ui.Label();
     protected com.codename1.ui.Label gui_Label_1 = new com.codename1.ui.Label();
@@ -121,7 +123,7 @@ public class DetailsEvent extends com.codename1.ui.Form {
                 gui_ContainerBTN.setInlineStylesTheme(resourceObjectInstance);
         gui_ContainerBTN.setInlineAllStyles("margin:inherit inherit inherit 40px;");
         gui_ContainerBTN.setName("ContainerBTN");
-        gui_Container.setPreferredSizeStr("inherit 31.75275230407715mm");
+        gui_Container.setPreferredSizeStr("inherit 53.55631mm");
                 gui_Container.setInlineStylesTheme(resourceObjectInstance);
         gui_Container.setName("Container");
         gui_Container_1.setPreferredSizeStr("inherit 38.526672mm");
@@ -133,8 +135,8 @@ public class DetailsEvent extends com.codename1.ui.Form {
         gui_Container_3.setPreferredSizeStr("215.07198mm 8.890771mm");
                 gui_Container_3.setInlineStylesTheme(resourceObjectInstance);
         gui_Container_3.setName("Container_3");
-        gui_Container_Participants.setPreferredSizeStr("215.07198mm 74.93649mm");
-        gui_Container_Participants.setScrollableX(true);
+        gui_Container_Participants.setPreferredSizeStr("215.07198mm 63.29382mm");
+        gui_Container_Participants.setScrollableX(false);
                 gui_Container_Participants.setInlineStylesTheme(resourceObjectInstance);
         gui_Container_Participants.setName("Container_Participants");
         addComponent(gui_ContainerBTN);
@@ -156,26 +158,42 @@ public class DetailsEvent extends com.codename1.ui.Form {
         gui_ContainerBTN.addComponent(gui_BtnDeleteEvent);
         gui_ContainerBTN.addComponent(gui_BtnParticipate);
         addComponent(gui_Container);
-        gui_event_name.setPreferredSizeStr("101.18544mm 6.1388655mm");
+        gui_event_name.setPreferredSizeStr("186.2828mm 6.1388655mm");
         gui_event_name.setText("1");
                 gui_event_name.setInlineStylesTheme(resourceObjectInstance);
         gui_event_name.setName("event_name");
-        gui_date.setPreferredSizeStr("101.18544mm 6.1388655mm");
+        gui_date.setPreferredSizeStr("185.0127mm 6.1388655mm");
         gui_date.setText("1");
                 gui_date.setInlineStylesTheme(resourceObjectInstance);
         gui_date.setName("date");
-        gui_heure.setPreferredSizeStr("101.18544mm 6.1388655mm");
+        gui_heure.setPreferredSizeStr("185.64775mm 7.4089756mm");
         gui_heure.setText("1");
                 gui_heure.setInlineStylesTheme(resourceObjectInstance);
         gui_heure.setName("heure");
-        gui_place.setPreferredSizeStr("101.18544mm 6.1388655mm");
+        gui_place.setPreferredSizeStr("0.0mm 6.1388655mm");
         gui_place.setText("1");
                 gui_place.setInlineStylesTheme(resourceObjectInstance);
+        gui_place.setInlineAllStyles("bgColor:fffaf9; fgColor:ffffff;");
         gui_place.setName("place");
+        gui_Textgeorev.setPreferredSizeStr("185.0127mm 21.380186mm");
+        gui_Textgeorev.setEditable(false);
+        gui_Textgeorev.setEnabled(false);
+        gui_Textgeorev.setRTL(true);
+        gui_Textgeorev.setText("");
+                gui_Textgeorev.setInlineStylesTheme(resourceObjectInstance);
+        gui_Textgeorev.setName("Textgeorev");
+        gui_Textgeorev.setColumns(8);
+        gui_Textgeorev.setRows(2);
         gui_Container.addComponent(gui_event_name);
         gui_Container.addComponent(gui_date);
         gui_Container.addComponent(gui_heure);
         gui_Container.addComponent(gui_place);
+        gui_Container.addComponent(gui_Textgeorev);
+        ((com.codename1.ui.layouts.LayeredLayout)gui_event_name.getParent().getLayout()).setInsets(gui_event_name, "0.0mm 1.0584259mm auto 0.0mm").setReferenceComponents(gui_event_name, "-1 -1 -1 -1").setReferencePositions(gui_event_name, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_date.getParent().getLayout()).setInsets(gui_date, "1.6934801mm -1.9073486E-6mm auto 0.0mm").setReferenceComponents(gui_date, "0 3 -1 0 ").setReferencePositions(gui_date, "1.0 1.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_heure.getParent().getLayout()).setInsets(gui_heure, "35.897434% auto auto 0.0mm").setReferenceComponents(gui_heure, "-1 -1 -1 0 ").setReferencePositions(gui_heure, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_place.getParent().getLayout()).setInsets(gui_place, "auto 1.6934814mm 0.0mm 98.76266%").setReferenceComponents(gui_place, "2 -1 -1 0 ").setReferencePositions(gui_place, "1.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Textgeorev.getParent().getLayout()).setInsets(gui_Textgeorev, "1.6934801mm 3.33786E-6mm 1.058425mm 0.0mm").setReferenceComponents(gui_Textgeorev, "2 0 3 -1").setReferencePositions(gui_Textgeorev, "1.0 0.0 0.0 0.0");
         addComponent(gui_Container_1);
         gui_Label.setPreferredSizeStr("24.767147mm inherit");
         gui_Label.setText("Event Name");
@@ -227,15 +245,17 @@ public class DetailsEvent extends com.codename1.ui.Form {
         ((com.codename1.ui.layouts.LayeredLayout)gui_Button.getParent().getLayout()).setInsets(gui_Button, "0.0mm 1.058424mm 0.0mm auto").setReferenceComponents(gui_Button, "-1 -1 -1 -1").setReferencePositions(gui_Button, "0.0 0.0 0.0 0.0");
         addComponent(gui_Container_Participants);
         ((com.codename1.ui.layouts.LayeredLayout)gui_ContainerBTN.getParent().getLayout()).setInsets(gui_ContainerBTN, "0.0mm 0.0mm auto 1.4817951mm").setReferenceComponents(gui_ContainerBTN, "5 1 -1 -1").setReferencePositions(gui_ContainerBTN, "1.0 0.0 0.0 0.0");
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Container.getParent().getLayout()).setInsets(gui_Container, "0.0mm 0.0mm 74.5098% 0.0mm").setReferenceComponents(gui_Container, "2 -1 -1 2 ").setReferencePositions(gui_Container, "0.0 0.0 0.0 1.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Container.getLayout()).setPreferredWidthMM((float)188.18797);
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Container.getLayout()).setPreferredHeightMM((float)53.55631);
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Container.getParent().getLayout()).setInsets(gui_Container, "0.0mm 0.0mm 64.70588% 0.0mm").setReferenceComponents(gui_Container, "2 -1 -1 2 ").setReferencePositions(gui_Container, "0.0 0.0 0.0 1.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Container_1.getParent().getLayout()).setInsets(gui_Container_1, "11.960543% auto auto 0.0mm").setReferenceComponents(gui_Container_1, "-1 -1 -1 -1").setReferencePositions(gui_Container_1, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Container_2.getLayout()).setPreferredWidthMM((float)213.59018);
         ((com.codename1.ui.layouts.LayeredLayout)gui_Container_2.getLayout()).setPreferredHeightMM((float)10.372565);
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_2.getParent().getLayout()).setInsets(gui_Container_2, "0.0mm 0.0mm 90.97744% 0.0mm").setReferenceComponents(gui_Container_2, "1 -1 -1 0 ").setReferencePositions(gui_Container_2, "1.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_2.getParent().getLayout()).setInsets(gui_Container_2, "0.0mm auto auto 0.0mm").setReferenceComponents(gui_Container_2, "1 -1 -1 2 ").setReferencePositions(gui_Container_2, "1.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Container_3.getLayout()).setPreferredWidthMM((float)215.07198);
         ((com.codename1.ui.layouts.LayeredLayout)gui_Container_3.getLayout()).setPreferredHeightMM((float)8.890771);
         ((com.codename1.ui.layouts.LayeredLayout)gui_Container_3.getParent().getLayout()).setInsets(gui_Container_3, "auto 0.0mm 0.0mm 0.0mm").setReferenceComponents(gui_Container_3, "-1 1 1 0 ").setReferencePositions(gui_Container_3, "0.0 0.0 1.0 0.0");
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_Participants.getParent().getLayout()).setInsets(gui_Container_Participants, "40.32059% auto 16.029593% 0.0mm").setReferenceComponents(gui_Container_Participants, "-1 -1 -1 2 ").setReferencePositions(gui_Container_Participants, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Container_Participants.getParent().getLayout()).setInsets(gui_Container_Participants, "0.0mm auto 30.092592% 0.0mm").setReferenceComponents(gui_Container_Participants, "3 -1 -1 2 ").setReferencePositions(gui_Container_Participants, "1.0 0.0 0.0 0.0");
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
@@ -251,6 +271,11 @@ public class DetailsEvent extends com.codename1.ui.Form {
         updevent.gui_date.setText(gui_date.getText());
         updevent.gui_heure.setText(gui_heure.getText());
         updevent.gui_place.setText(gui_place.getText());
+        updevent.gui_place.setHidden(true);
+        
+        List<String> st =StringUtil.tokenize(evt.getPlace(),",");
+        updevent.gui_Textgeorev.setText(new ServiceEvent().getAdress(st.get(0),st.get(1)));
+                    
 
         updevent.show();
     }
@@ -259,8 +284,13 @@ public class DetailsEvent extends com.codename1.ui.Form {
         User u = StaticVars.getCurrentUser();
         Event p = new Event(evt.getId(), u.getId(), gui_event_name.getText(), gui_date.getText(), gui_heure.getText(), gui_place.getText());
         ServiceEvent sp = new ServiceEvent();
-        if (sp.deleteEvent(p) == 200) {
-
+        ServiceParticipant serp = new ServiceParticipant();
+        
+        if (Dialog.show("Confirm", "Do you want to proceed?", "OK", "Cancel")) {
+    //Ok action goes here
+    if (sp.deleteEvent(p) == 200) {
+            serp.deleteEventParticipant(p.getId());
+            
             Dialog.show("SUCCESS", "Event Deleted", "OK", null);
 
             new ListEvent().show();
@@ -268,6 +298,10 @@ public class DetailsEvent extends com.codename1.ui.Form {
 
             Dialog.show("ERROR", "ERREUR SERVEUR", "OK", null);
         }
+}
+        
+        
+        
 
     }
 
@@ -292,6 +326,7 @@ public class DetailsEvent extends com.codename1.ui.Form {
             Participant p = new Participant(evt.getId(), u.getId());
             ServiceParticipant sp = new ServiceParticipant();
             if (sp.addParticipant(p) == 200) {
+                gui_Container_Participants.removeAll();
                 for (Participant pp : new ServiceParticipant().selectParticipant(evt.getId())) {
                     User usr = new User();
                     usr = new ServiceParticipant().getInfoParticipant(pp.getIdu());

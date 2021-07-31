@@ -19,19 +19,21 @@
     <component type="Label" text="Place" styles="font:native:MainBold native:MainBold; margin:inherit inherit 3px inherit;" name="Label_3">
     </component>
   </component>
-  <component type="Container" layout="BoxLayout" boxLayoutAxis="Y"  preferredSize="192.63336mm 36.19814mm" name="Container_2">
-    <layoutConstraint insets="0.0mm 0.0mm 0.0mm 0.0mm" referenceComponents="1 0 1 1 " referencePositions="0.0 0.0 0.0 1.0" />
-    <component type="TextField" text="TextField" styles="font:native:MainBold native:MainBold; border:1.0px solid 0; bgColor:70101; fgColor:0; bgImage:null;" columns="20" name="event_name">
+  <component type="Container" layout="BoxLayout" boxLayoutAxis="Y"  preferredSize="192.63336mm 48.687553mm" name="Container_2">
+    <layoutConstraint insets="0.0mm auto auto 0.0mm" referenceComponents="1 0 -1 1 " referencePositions="0.0 0.0 0.0 1.0" />
+    <component type="TextField" text="TextField" styles="font:native:MainBold native:MainBold; border:1.0px solid 0; bgColor:70101; fgColor:0; bgImage:null;" preferredSize="86.790855mm inherit" columns="20" name="event_name">
     </component>
     <component type="Picker" text="JJ/MM/AAAA" styles="font:native:MainBold native:MainBold; fgColor:90001;" preferredSize="74.72481mm inherit" pickerType="1" name="date">
     </component>
     <component type="Picker" text="00:00" styles="font:native:MainBold native:MainBold; fgColor:90001;" pickerType="2" name="heure">
     </component>
-    <component type="TextField" text="TextField" styles="border:1.0px solid 0; fgColor:70101;" name="place">
+    <component type="TextField" text="TextField" styles="border:1.0px solid 0; fgColor:70101;" preferredSize="0.84674007mm inherit" name="place">
+    </component>
+    <component type="TextArea" text="TextArea" preferredSize="189.2464mm 10.58425mm" enabled="false" editable="false" columns="8" name="Textgeorev">
     </component>
   </component>
   <component type="Container" layout="LayeredLayout" layeredLayoutPreferredWidthMM="215.07198" layeredLayoutPreferredHeightMM="12.7011"  preferredSize="215.07198mm 12.7011mm" name="Container_3">
-    <layoutConstraint insets="0.0mm 2.5402203mm auto 0.0mm" referenceComponents="1 0 -1 -1" referencePositions="1.0 0.0 0.0 0.0" />
+    <layoutConstraint insets="11.090225% 2.5402203mm auto 0.0mm" referenceComponents="1 0 -1 0 " referencePositions="1.0 0.0 0.0 0.0" />
     <component type="Button" text="Map" icon="fontImage:e55b" name="BtnUpdateMap" actionEvent="true">
       <layoutConstraint insets="auto 10.629921% 2.7519052mm auto" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
     </component>

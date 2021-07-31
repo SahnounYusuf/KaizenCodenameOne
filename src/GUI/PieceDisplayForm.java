@@ -34,7 +34,7 @@ public class PieceDisplayForm extends Form {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialog.show("test", "personne avec l'id " + p.getIdp(), "OK", null);
+                Dialog.show("Delet / Modify", "you have choose  " + p.getNom()+" , you can delete or modified it.", "OK", null);
                 new PieceUpdateForm(res, p).show();
             }
         });

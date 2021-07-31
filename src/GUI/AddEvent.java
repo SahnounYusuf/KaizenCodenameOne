@@ -13,8 +13,10 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.validation.LengthConstraint;
 import com.codename1.ui.validation.Validator;
 import entities.Event;
+import entities.Participant;
 import entities.User;
 import services.ServiceEvent;
+import services.ServiceParticipant;
 import utils.StaticVars;
 
 /**
@@ -30,12 +32,10 @@ public class AddEvent extends com.codename1.ui.Form {
     
     public AddEvent(com.codename1.ui.util.Resources resourceObjectInstance) {
         initGuiBuilderComponents(resourceObjectInstance);
-        Validator val = new Validator();
-        val.addConstraint(gui_event_name, new LengthConstraint(3,"Error"));
-        val.addSubmitButtons(gui_btnAjouter);
+        
     }
 
-////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
+//////////////////////////////////////////////////////////////////////////////////-- DON'T EDIT BELOW THIS LINE!!!
     protected com.codename1.ui.Label gui_Label = new com.codename1.ui.Label();
     protected com.codename1.ui.Label gui_Label_1 = new com.codename1.ui.Label();
     protected com.codename1.ui.Label gui_Label_2 = new com.codename1.ui.Label();
@@ -48,6 +48,7 @@ public class AddEvent extends com.codename1.ui.Form {
     protected com.codename1.ui.Container gui_ContainerBTN = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.X_AXIS));
     protected com.codename1.ui.Button gui_btnAjouter = new com.codename1.ui.Button();
     protected com.codename1.ui.Button gui_btnCancel = new com.codename1.ui.Button();
+    protected com.codename1.ui.TextArea gui_Textgeorev = new com.codename1.ui.TextArea();
 
 
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -147,6 +148,14 @@ public class AddEvent extends com.codename1.ui.Form {
                 gui_ContainerBTN.setInlineStylesTheme(resourceObjectInstance);
         gui_ContainerBTN.setInlineAllStyles("alignment:center; margin:inherit inherit inherit 20px; padding:20px 20px 20px 20px;");
         gui_ContainerBTN.setName("ContainerBTN");
+        gui_Textgeorev.setPreferredSizeStr("50.8044mm 24.978832mm");
+        gui_Textgeorev.setEditable(false);
+        gui_Textgeorev.setEnabled(false);
+        gui_Textgeorev.setText("");
+                gui_Textgeorev.setInlineStylesTheme(resourceObjectInstance);
+        gui_Textgeorev.setName("Textgeorev");
+        gui_Textgeorev.setColumns(8);
+        gui_Textgeorev.setRows(2);
         addComponent(gui_Label);
         addComponent(gui_Label_1);
         addComponent(gui_Label_2);
@@ -157,20 +166,20 @@ public class AddEvent extends com.codename1.ui.Form {
         addComponent(gui_place);
         addComponent(gui_Button);
         addComponent(gui_ContainerBTN);
-        gui_btnAjouter.setPreferredSizeStr("25.613886mm 11.007621mm");
+        gui_btnAjouter.setPreferredSizeStr("25.613886mm 13.124471mm");
         gui_btnAjouter.setText("Add Event");
                 gui_btnAjouter.setInlineStylesTheme(resourceObjectInstance);
-        gui_btnAjouter.setInlineAllStyles("alignment:left;");
         gui_btnAjouter.setName("btnAjouter");
         com.codename1.ui.FontImage.setMaterialIcon(gui_btnAjouter,"\ue145".charAt(0));
-        gui_btnCancel.setPreferredSizeStr("19.686707mm 11.007621mm");
+        gui_btnCancel.setPreferredSizeStr("19.686707mm 13.124471mm");
         gui_btnCancel.setText("Cancel");
                 gui_btnCancel.setInlineStylesTheme(resourceObjectInstance);
-        gui_btnCancel.setInlineAllStyles("bgType:none; alignment:right; margin:inherit 20px inherit inherit;");
+        gui_btnCancel.setInlineAllStyles("bgType:none; alignment:right; margin:inherit 30px inherit inherit;");
         gui_btnCancel.setName("btnCancel");
         com.codename1.ui.FontImage.setMaterialIcon(gui_btnCancel,"\ue5c9".charAt(0));
         gui_ContainerBTN.addComponent(gui_btnAjouter);
         gui_ContainerBTN.addComponent(gui_btnCancel);
+        addComponent(gui_Textgeorev);
         ((com.codename1.ui.layouts.LayeredLayout)gui_Label.getParent().getLayout()).setInsets(gui_Label, "0.0mm -1.270112mm 0.0mm 0.0mm").setReferenceComponents(gui_Label, "4 4 4 -1").setReferencePositions(gui_Label, "0.0 1.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Label_1.getParent().getLayout()).setInsets(gui_Label_1, "17.470882% auto auto 0.0mm").setReferenceComponents(gui_Label_1, "-1 -1 -1 0 ").setReferencePositions(gui_Label_1, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_Label_2.getParent().getLayout()).setInsets(gui_Label_2, "28.112217% auto auto 0.0mm").setReferenceComponents(gui_Label_2, "-1 -1 -1 0 ").setReferencePositions(gui_Label_2, "0.0 0.0 0.0 0.0");
@@ -179,8 +188,9 @@ public class AddEvent extends com.codename1.ui.Form {
         ((com.codename1.ui.layouts.LayeredLayout)gui_date.getParent().getLayout()).setInsets(gui_date, "17.138103% 0.0mm auto 0.0mm").setReferenceComponents(gui_date, "-1 4 -1 4 ").setReferencePositions(gui_date, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_heure.getParent().getLayout()).setInsets(gui_heure, "28.45258% 0.0mm auto 0.0mm").setReferenceComponents(gui_heure, "-1 4 -1 4 ").setReferencePositions(gui_heure, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_place.getParent().getLayout()).setInsets(gui_place, "0.0mm auto 0.0mm 0.0mm").setReferenceComponents(gui_place, "3 -1 3 5 ").setReferencePositions(gui_place, "0.0 0.0 0.0 0.0");
-        ((com.codename1.ui.layouts.LayeredLayout)gui_Button.getParent().getLayout()).setInsets(gui_Button, "46.03999% 5.5038104mm auto auto").setReferenceComponents(gui_Button, "-1 4 -1 -1").setReferencePositions(gui_Button, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Button.getParent().getLayout()).setInsets(gui_Button, "auto 4.2337mm 39.70407% auto").setReferenceComponents(gui_Button, "-1 4 -1 -1").setReferencePositions(gui_Button, "0.0 0.0 0.0 0.0");
         ((com.codename1.ui.layouts.LayeredLayout)gui_ContainerBTN.getParent().getLayout()).setInsets(gui_ContainerBTN, "72.44389% -7.4505806E-8mm 15.80497% 0.0mm").setReferenceComponents(gui_ContainerBTN, "-1 -1 -1 -1").setReferencePositions(gui_ContainerBTN, "0.0 0.0 0.0 0.0");
+        ((com.codename1.ui.layouts.LayeredLayout)gui_Textgeorev.getParent().getLayout()).setInsets(gui_Textgeorev, "0.0mm -2.1168501mm 4.2337008mm 0.0mm").setReferenceComponents(gui_Textgeorev, "3 4 8 4 ").setReferencePositions(gui_Textgeorev, "0.0 0.0 1.0 0.0");
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
@@ -191,8 +201,9 @@ public class AddEvent extends com.codename1.ui.Form {
         
         Event p = new Event(u.getId(),gui_event_name.getText(), gui_date.getText(), gui_heure.getText(), gui_place.getText());
                     ServiceEvent sp = new ServiceEvent();
+                    ServiceParticipant serp = new ServiceParticipant();
                     if (sp.addEvent(p) == 200) {
-
+                        
                         Dialog.show("SUCCESS", "Event Added", "OK", null);
                         
                         new ListEvent().show();
@@ -200,7 +211,7 @@ public class AddEvent extends com.codename1.ui.Form {
 
                      Dialog.show("ERROR", "ERREUR SERVEUR", "OK", null);   
                     }
-                  
+//     serp.addParticipant(new Participant(p.getId(),u.getId()));             
     }
     
  

@@ -10,11 +10,16 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.io.URL;
 import com.codename1.ui.events.ActionListener;
 import entities.Event;
 import entities.Participant;
 import utils.StaticVars;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -176,6 +181,34 @@ public class ServiceEvent {
         } catch (IOException ex) {
         }
         return (events);
+    }
+    
+    public String getAdress(String lat,String lon){
+        String place="";
+        JSONParser json = new JSONParser();
+        try {
+            InputStream input = new URL("https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat="+lat+"&lon="+lon).openStream();
+       
+        Reader r = new InputStreamReader(input);
+        Map<String, Object> data = json.parseJSON(r);
+        System.out.println("data  "+data);
+   
+         place = (String)data.get("display_name");
+     
+            System.out.println(place);
+       
+       
+       
+       
+        }  catch (IOException ex) {
+            System.out.println(ex);
+        } catch (URISyntaxException ex) {
+             System.out.println(ex);
+        }
+       
+   
+   
+    return place;
     }
     
 }
